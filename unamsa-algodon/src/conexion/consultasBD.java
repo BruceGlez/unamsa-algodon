@@ -4,6 +4,8 @@
  */
 package conexion;
 
+import clases.clientes;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -14,6 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class consultasBD {
     
+    private conexionBD conectar;
+    private clientes cliente;
+    private Connection con;
+    
+    public consultasBD(){
+        conectar = new conexionBD();
+        cliente = new clientes();
+        
+    }
+    
     public void registrarCliente(String nombre, String apellidos, String telefono, String direccion){
         PreparedStatement ps;
         String sql;
@@ -21,6 +33,8 @@ public class consultasBD {
         cliente.setApellidos(apellidos);
         cliente.setTelefono(telefono);
         cliente.setDireccion(direccion);
+        
+        
         
         try{
             con = conectar.getConexion();
@@ -38,5 +52,9 @@ public class consultasBD {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
+    }
+
+    public consultasBD(clientes cliente) {
+        this.cliente = cliente;
     }
 }

@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vista;
+package interfazModulosCaptura;
 
-import vista.interfazPrincipal;
+import interfazModulosPrincipal.interfazPrincipal;
+import interfazModulosPrincipal.interfazPrincipal;
 
 /**
  *
@@ -244,7 +245,7 @@ public class interfazCaptura extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
-        vista.interfazPrincipal verformulario = new interfazPrincipal();
+        interfazModulosPrincipal.interfazPrincipal verformulario = new interfazPrincipal();
            
         
         verformulario.setVisible(true);

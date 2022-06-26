@@ -20,20 +20,7 @@ public class clientes {
     String telefono;
     String correo;
     int idContador;
-
-    public clientes(int id, String nombre, String direccion, String RFC, int idRegimenFiscal, String telefono, String correo, int idContador) {
-        this.id = id;
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.RFC = RFC;
-        this.idRegimenFiscal = idRegimenFiscal;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.idContador = idContador;
-    }
-    
-    
-
+   
     public int getId() {
         return id;
     }
