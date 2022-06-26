@@ -111,10 +111,9 @@ public class interfazDivision extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         interfazModulosPrincipal.interfazPrincipal verformulario = new interfazPrincipal();
-        interfazModulosDivison.interfazDivision verformdivision = new interfazDivision();
-        
-        verformdivision.setVisible(false);
+             
         verformulario.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

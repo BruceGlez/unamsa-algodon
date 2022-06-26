@@ -232,8 +232,8 @@ public class interfazCaptura extends javax.swing.JFrame {
         // TODO add your handling code here:
         interfazModulosPrincipal.interfazPrincipal verformulario = new interfazPrincipal();
            
-        
         verformulario.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     /**

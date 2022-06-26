@@ -143,6 +143,7 @@ public class capturaCuentasBancarias extends javax.swing.JFrame {
 
     private void btnCuentaBancariaCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaBancariaCerrarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnCuentaBancariaCerrarActionPerformed
 
     private void btnCuentaBancariaRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuentaBancariaRegistrarActionPerformed

@@ -5,6 +5,7 @@
 package interfazModulosPrincipal;
 
 import interfazModulosCaptura.interfazCaptura;
+import interfazModulosDivison.interfazDivision;
 
 /**
  *
@@ -120,10 +121,15 @@ public class interfazPrincipal extends javax.swing.JFrame {
         interfazModulosCaptura.interfazCaptura verformulario = new interfazCaptura();
         
         verformulario.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnPrincipalCapturasActionPerformed
 
     private void btnPrincipalDivisionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipalDivisionesActionPerformed
         // TODO add your handling code here:
+        interfazDivision verformulario = new interfazDivision();
+        
+        verformulario.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnPrincipalDivisionesActionPerformed
 
     /**

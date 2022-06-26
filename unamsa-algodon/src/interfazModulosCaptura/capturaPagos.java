@@ -232,6 +232,7 @@ public class capturaPagos extends javax.swing.JFrame {
 
     private void btnPagosCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosCerrarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnPagosCerrarActionPerformed
 
     /**

@@ -123,6 +123,7 @@ public class capturaContadores extends javax.swing.JFrame {
 
     private void btnContadorCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContadorCerrarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnContadorCerrarActionPerformed
 
     private void btnContadorRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContadorRegistrarActionPerformed
