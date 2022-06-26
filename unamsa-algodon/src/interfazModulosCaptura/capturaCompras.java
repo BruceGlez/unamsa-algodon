@@ -41,6 +41,8 @@ public class capturaCompras extends javax.swing.JFrame {
         cboxCompraCliente = new javax.swing.JComboBox<>();
         btnCompraRegistrar = new javax.swing.JButton();
         btnCompraCerrar = new javax.swing.JButton();
+        lblComprasComprador = new javax.swing.JLabel();
+        cboxComprasComprador = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,6 +82,10 @@ public class capturaCompras extends javax.swing.JFrame {
             }
         });
 
+        lblComprasComprador.setText("Comprador: ");
+
+        cboxComprasComprador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,30 +95,32 @@ public class capturaCompras extends javax.swing.JFrame {
                 .addComponent(lblCompraTitulo)
                 .addGap(166, 166, 166))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(179, 179, 179)
-                                .addComponent(lblCompraTotal))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCompraNoCompra)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCompraNoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(lblCompraPacas)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCompraPacas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(btnCompraRegistrar)
-                        .addGap(24, 24, 24)
-                        .addComponent(btnCompraCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblCompraCliente)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblComprasComprador)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(179, 179, 179)
+                                    .addComponent(lblCompraTotal))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lblCompraNoCompra)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCompraNoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addComponent(lblCompraPacas)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCompraPacas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(40, 40, 40)
+                            .addComponent(btnCompraRegistrar)
+                            .addGap(24, 24, 24)
+                            .addComponent(btnCompraCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(lblCompraCliente))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboxCompraCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,7 +132,8 @@ public class capturaCompras extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtCompraFechaLiq, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(txtCompraFechaVenc))))
+                            .addComponent(txtCompraFechaVenc)))
+                    .addComponent(cboxComprasComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -155,7 +164,11 @@ public class capturaCompras extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCompraCliente)
                     .addComponent(cboxCompraCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboxComprasComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblComprasComprador))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCompraRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCompraCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,6 +222,7 @@ public class capturaCompras extends javax.swing.JFrame {
     private javax.swing.JButton btnCompraCerrar;
     private javax.swing.JButton btnCompraRegistrar;
     private javax.swing.JComboBox<String> cboxCompraCliente;
+    private javax.swing.JComboBox<String> cboxComprasComprador;
     private javax.swing.JLabel lblCompraCliente;
     private javax.swing.JLabel lblCompraFechaLiq;
     private javax.swing.JLabel lblCompraFechaVenc;
@@ -216,6 +230,7 @@ public class capturaCompras extends javax.swing.JFrame {
     private javax.swing.JLabel lblCompraPacas;
     private javax.swing.JLabel lblCompraTitulo;
     private javax.swing.JLabel lblCompraTotal;
+    private javax.swing.JLabel lblComprasComprador;
     private javax.swing.JTextField txtCompraFechaLiq;
     private javax.swing.JTextField txtCompraFechaVenc;
     private javax.swing.JTextField txtCompraNoCompra;
