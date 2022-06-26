@@ -117,7 +117,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        vista.moduloCaptura verformulario = new moduloCaptura();
+        vista.interfazCaptura verformulario = new interfazCaptura();
         
         verformulario.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -129,7 +129,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
