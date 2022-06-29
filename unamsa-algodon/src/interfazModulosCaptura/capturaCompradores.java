@@ -153,6 +153,9 @@ public class capturaCompradores extends javax.swing.JFrame {
 
     private void btnCompradoresCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompradoresCerrarActionPerformed
         // TODO add your handling code here:
+        interfazCaptura verformulario = new interfazCaptura();
+        
+        verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCompradoresCerrarActionPerformed
 

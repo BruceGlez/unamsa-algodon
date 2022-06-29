@@ -6,6 +6,7 @@ package interfazModulosPrincipal;
 
 import interfazModulosCaptura.interfazCaptura;
 import interfazModulosDivison.interfazDivision;
+import interfazModulosReportes.interfazReportes;
 
 /**
  *
@@ -67,6 +68,11 @@ public class interfazPrincipal extends javax.swing.JFrame {
         });
 
         btnPrincipalReportes.setText("Reportes");
+        btnPrincipalReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrincipalReportesActionPerformed(evt);
+            }
+        });
 
         tblPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +137,14 @@ public class interfazPrincipal extends javax.swing.JFrame {
         verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPrincipalDivisionesActionPerformed
+
+    private void btnPrincipalReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipalReportesActionPerformed
+        // TODO add your handling code here:
+        interfazReportes verformulario = new interfazReportes();
+        
+        verformulario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnPrincipalReportesActionPerformed
 
     /**
      * @param args the command line arguments

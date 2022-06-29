@@ -252,6 +252,9 @@ public class capturaClientes extends javax.swing.JFrame {
 
     private void btnClienteCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteCerrarActionPerformed
         // TODO add your handling code here:
+        interfazCaptura verformulario = new interfazCaptura();
+        
+        verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnClienteCerrarActionPerformed
 

@@ -89,7 +89,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lblPagosMontoDLS" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtPagosMontoDLS" max="32767" attributes="0"/>
+                      <Component id="txtPagosMontoDLS" pref="125" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="48" max="32767" attributes="0"/>

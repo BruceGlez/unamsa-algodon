@@ -27,14 +27,14 @@
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnInterfazCapturaComplementos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaClientes" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaCompradores" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaCompras" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
@@ -44,17 +44,17 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton9" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="btnInterfazCapturaReg" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                      <Component id="jButton10" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Component id="jButton4" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="btnInterfazCapturaFacturas" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="btnInterfazCapturaContadores" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton8" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Component id="jButton7" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Component id="jButton6" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="btnInterfazCapturaPagos" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="btnInterfazCapturaDivisiones" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="btnInterfazCapturaCuentas" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
                           </Group>
@@ -72,31 +72,31 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                      <Component id="jButton10" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnInterfazCapturaFacturas" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="jButton9" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaClientes" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaReg" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaCompras" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="btnInterfazCapturaContadores" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnInterfazCapturaCompradores" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jButton7" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnInterfazCapturaDivisiones" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton8" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnInterfazCapturaPagos" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="btnInterfazCapturaCuentas" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="jButton11" min="-2" pref="100" max="-2" attributes="0"/>
+              <Component id="btnInterfazCapturaComplementos" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace pref="75" max="32767" attributes="0"/>
               <Component id="jButton12" min="-2" pref="56" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
@@ -105,84 +105,84 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaClientes">
       <Properties>
         <Property name="text" type="java.lang.String" value="Clientes"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaClientesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaCompras">
       <Properties>
         <Property name="text" type="java.lang.String" value="Compras"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaComprasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaCompradores">
       <Properties>
         <Property name="text" type="java.lang.String" value="Compradores"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaCompradoresActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaContadores">
       <Properties>
         <Property name="text" type="java.lang.String" value="Contadores"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaContadoresActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaCuentas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cuentas Bancarias"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaCuentasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaDivisiones">
       <Properties>
         <Property name="text" type="java.lang.String" value="Divisiones"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaDivisionesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton8">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaPagos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pagos"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaPagosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton9">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaReg">
       <Properties>
         <Property name="text" type="java.lang.String" value="Regimenes Fiscales"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaRegActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton10">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaFacturas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Facturas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaFacturasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton11">
+    <Component class="javax.swing.JButton" name="btnInterfazCapturaComplementos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Complementos de Pago"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInterfazCapturaComplementosActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton12">

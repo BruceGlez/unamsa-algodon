@@ -111,6 +111,9 @@ public class capturaComplementoPago extends javax.swing.JFrame {
 
     private void btnComplementoCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplementoCerrarActionPerformed
         // TODO add your handling code here:
+        interfazCaptura verformulario = new interfazCaptura();
+        
+        verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnComplementoCerrarActionPerformed
 
