@@ -241,7 +241,58 @@ public class capturaClientes extends javax.swing.JFrame {
 
     private void btnClienteRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteRegistrarActionPerformed
         // TODO add your handling code here:
+        Boolean guardar = true;
+        String mensaje = "";
         
+      //  int codigoPostal = Int.parseInt(clienteTxtCP.getText();
+        int codigoPostal = Integer.parseInt(clienteTxtCP.getText());
+        String correoElectronico = clienteTxtCorreo.getText();
+        String direccion = clienteTxtDireccion.getText();
+        String nombre = clienteTxtNombre.getText();
+        String RFC = clienteTxtRFC.getText();
+        String telefono = clienteTxtTelefono.getText();
+        int regimenFiscal = cboxRegimenFiscal.getSelectedIndex();
+        int contador = cboxContador.getSelectedIndex();
+        
+        
+        if (nombre.length()==0){
+            guardar = false;
+            mensaje+="Escriba el nombre, por favor\n";
+        }
+        if (direccion.length()==0){
+            guardar = false;
+            mensaje+="Escriba los apellidos, por favor\n";
+        }
+        if (telefono.length()==0){
+            guardar = false;
+            mensaje+="Escriba el telefono, por favor\n";
+        }
+        if (RFC.length()==0){
+            guardar = false;
+            mensaje+="Escriba la direccion, por favor\n";
+        }
+        if (correoElectronico.length()==0){
+        guardar = false;
+        mensaje+="Escriba la direccion, por favor\n";
+        }
+        if (codigoPostal == 0){
+        guardar = false;
+        mensaje+="Escriba la direccion, por favor\n";
+        }
+        if(guardar){
+           consultasBD consulta = new consultasBD();
+           consulta.registrarCliente(nombre, direccion, codigoPostal, RFC, regimenFiscal, telefono, correoElectronico, contador);
+           clienteTxtNombre.setText("");
+           clienteTxtDireccion.setText("");
+           clienteTxtCP.setText("");
+           clienteTxtRFC.setText("");
+           clienteTxtTelefono.setText("");
+           clienteTxtCorreo.setText("");
+           
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
       
         
     }//GEN-LAST:event_btnClienteRegistrarActionPerformed
@@ -276,6 +327,14 @@ public class capturaClientes extends javax.swing.JFrame {
 
     private void cboxContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxContadorActionPerformed
         // TODO add your handling code here:
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cargarComboBox.consultarContadores(cboxContador);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_cboxContadorActionPerformed
 
     private void cboxRegimenFiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRegimenFiscalActionPerformed

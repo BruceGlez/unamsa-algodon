@@ -7,7 +7,9 @@ package conexion;
 import clases.clientes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +29,7 @@ public class consultasBD {
     }
     
        
-    public void registrarCliente(String nombre, String direccion, int codigoPostal, String RFC, int idRegimenFiscal, int idCuentaBancaria, String telefono, String correo, int idContador){
+    public void registrarCliente(String nombre, String direccion, int codigoPostal, String RFC, int idRegimenFiscal, String telefono, String correo, int idContador){
         PreparedStatement ps;
         String sql;
         cliente.setNombre(nombre);
@@ -35,7 +37,6 @@ public class consultasBD {
         cliente.setCodigoPostal(codigoPostal);
         cliente.setRFC(RFC);
         cliente.setIdRegimenFiscal(idRegimenFiscal);
-        cliente.setIdCuentaBancaria(idCuentaBancaria);
         cliente.setTelefono(telefono);
         cliente.setCorreo(correo);
         cliente.setIdContador(idContador);
@@ -44,7 +45,7 @@ public class consultasBD {
         
         try{
             con = conectar.getConexion();
-            sql = "INSERT INTO clientes(nombre, direccion, codigoPostal, RFC, fkRegimen, fkCuentaBancaria, telefono, correo, fkContador) values(?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO clientes(nombre, direccion, codigoPostal, RFC, fkRegimen, telefono, correo, fkContador) values(?,?,?,?,?,?,?,?)";
             
             ps = con.prepareStatement(sql);
             
@@ -53,10 +54,9 @@ public class consultasBD {
             ps.setInt(3, cliente.getCodigoPostal());
             ps.setString(4, cliente.getRFC());
             ps.setInt(5, cliente.getIdRegimenFiscal());
-            ps.setInt(6, cliente.getIdCuentaBancaria());
-            ps.setString(7, cliente.getTelefono());
-            ps.setString(8, cliente.getCorreo());
-            ps.setInt(9, cliente.getIdContador());
+            ps.setString(6, cliente.getTelefono());
+            ps.setString(7, cliente.getCorreo());
+            ps.setInt(8, cliente.getIdContador());
             
             ps.execute();
             JOptionPane.showMessageDialog(null, "Se han insertado los datos");
@@ -64,4 +64,40 @@ public class consultasBD {
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
     }
+    
+    public void consultarContadores(JComboBox cboxContadores){
+        PreparedStatement ps;
+        String sql;
+        ResultSet result = null;
+        
+        try{
+            con = conectar.getConexion();
+            sql = "SELECT nombre, idcontadores FROM contadores ORDER BY nombre ASC";
+            
+            ps = con.prepareStatement(sql);
+            result = ps.executeQuery();
+            
+                  
+           while(result.next()){
+                cboxContadores.addItem(result.getString("idcontadores")+"-"+result.getString("nombre"));
+                
+            }
+            
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        } finally {
+            if(con!=null){
+                try{
+                    con.close();
+                    result.close();
+                    
+                    con = null;
+                    result = null;
+                }catch (SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                }
+            }
+        }
+    }
+
 }

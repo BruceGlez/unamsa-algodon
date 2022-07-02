@@ -16,7 +16,6 @@ public class clientes {
     int codigoPostal;
     String RFC;
     int idRegimenFiscal;
-    int idCuentaBancaria;
     String telefono;
     String correo;
     int idContador;
@@ -67,14 +66,6 @@ public class clientes {
 
     public void setIdRegimenFiscal(int idRegimenFiscal) {
         this.idRegimenFiscal = idRegimenFiscal;
-    }
-
-    public int getIdCuentaBancaria() {
-        return idCuentaBancaria;
-    }
-
-    public void setIdCuentaBancaria(int idCuentaBancaria) {
-        this.idCuentaBancaria = idCuentaBancaria;
     }
 
     public String getTelefono() {
