@@ -99,5 +99,40 @@ public class consultasBD {
             }
         }
     }
+    
+    public void consultarRegimenFiscal(JComboBox cboxContadores){
+        PreparedStatement ps;
+        String sql;
+        ResultSet result = null;
+        
+        try{
+            con = conectar.getConexion();
+            sql = "SELECT nombre, idregimenfiscal FROM regimenfiscal ORDER BY nombre ASC";
+            
+            ps = con.prepareStatement(sql);
+            result = ps.executeQuery();
+            
+                  
+           while(result.next()){
+                cboxContadores.addItem(result.getString("idregimenfiscal")+"-"+result.getString("nombre"));
+                
+            }
+            
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        } finally {
+            if(con!=null){
+                try{
+                    con.close();
+                    result.close();
+                    
+                    con = null;
+                    result = null;
+                }catch (SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                }
+            }
+        }
+    }
 
 }

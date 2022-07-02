@@ -111,7 +111,11 @@ public class capturaClientes extends javax.swing.JFrame {
         lblClienteTitulo.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         lblClienteTitulo.setText("Registro de Cliente");
 
-        cboxContador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxContador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxContadorMouseClicked(evt);
+            }
+        });
         cboxContador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxContadorActionPerformed(evt);
@@ -122,7 +126,11 @@ public class capturaClientes extends javax.swing.JFrame {
 
         lblClienteReg.setText("Regimen Fiscal:");
 
-        cboxRegimenFiscal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxRegimenFiscal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxRegimenFiscalMouseClicked(evt);
+            }
+        });
         cboxRegimenFiscal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboxRegimenFiscalActionPerformed(evt);
@@ -170,14 +178,14 @@ public class capturaClientes extends javax.swing.JFrame {
                             .addComponent(lblClienteContador)
                             .addComponent(lblClienteCorreo))
                         .addGap(35, 35, 35)
-                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(clienteTxtCorreo)
                             .addComponent(cboxRegimenFiscal, 0, 129, Short.MAX_VALUE)
-                            .addComponent(clienteTxtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cboxContador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panelClienteLayout.createSequentialGroup()
                         .addGap(242, 242, 242)
                         .addComponent(lblClienteTitulo)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         panelClienteLayout.setVerticalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,7 +237,7 @@ public class capturaClientes extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -244,24 +252,23 @@ public class capturaClientes extends javax.swing.JFrame {
         Boolean guardar = true;
         String mensaje = "";
         
-      //  int codigoPostal = Int.parseInt(clienteTxtCP.getText();
+        try{
+            
         int codigoPostal = Integer.parseInt(clienteTxtCP.getText());
         String correoElectronico = clienteTxtCorreo.getText();
         String direccion = clienteTxtDireccion.getText();
         String nombre = clienteTxtNombre.getText();
         String RFC = clienteTxtRFC.getText();
         String telefono = clienteTxtTelefono.getText();
-        int regimenFiscal = cboxRegimenFiscal.getSelectedIndex();
-        int contador = cboxContador.getSelectedIndex();
         
-        
+      
         if (nombre.length()==0){
             guardar = false;
             mensaje+="Escriba el nombre, por favor\n";
         }
         if (direccion.length()==0){
             guardar = false;
-            mensaje+="Escriba los apellidos, por favor\n";
+            mensaje+="Escriba la direccion, por favor\n";
         }
         if (telefono.length()==0){
             guardar = false;
@@ -269,16 +276,38 @@ public class capturaClientes extends javax.swing.JFrame {
         }
         if (RFC.length()==0){
             guardar = false;
-            mensaje+="Escriba la direccion, por favor\n";
+            mensaje+="Escriba el RFC, por favor\n";
         }
         if (correoElectronico.length()==0){
         guardar = false;
-        mensaje+="Escriba la direccion, por favor\n";
+        mensaje+="Escriba el Correo Electronico, por favor\n";
         }
         if (codigoPostal == 0){
         guardar = false;
         mensaje+="Escriba la direccion, por favor\n";
         }
+        if(cboxContador.getItemCount() == 0){
+            
+            mensaje="Escoja un Contador Porfavor";
+            JOptionPane.showMessageDialog(null, mensaje);
+        
+        }
+
+        if(cboxRegimenFiscal.getItemCount() == 0){
+            
+           mensaje="Escoja un Regimen Fiscal Porfavor";
+           JOptionPane.showMessageDialog(null, mensaje);     
+        
+        }
+
+            String c = (String) cboxContador.getSelectedItem();
+            char d = c.charAt(0);
+            int contador = Character.getNumericValue(d);
+            
+            String f = (String) cboxRegimenFiscal.getSelectedItem();
+            char g = f.charAt(0);
+            int regimenFiscal = Character.getNumericValue(g);
+        
         if(guardar){
            consultasBD consulta = new consultasBD();
            consulta.registrarCliente(nombre, direccion, codigoPostal, RFC, regimenFiscal, telefono, correoElectronico, contador);
@@ -293,7 +322,10 @@ public class capturaClientes extends javax.swing.JFrame {
            else{
                JOptionPane.showMessageDialog(null, mensaje);
            }
-      
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
         
     }//GEN-LAST:event_btnClienteRegistrarActionPerformed
 
@@ -327,19 +359,50 @@ public class capturaClientes extends javax.swing.JFrame {
 
     private void cboxContadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxContadorActionPerformed
         // TODO add your handling code here:
-        
-        try{
-        consultasBD cargarComboBox = new consultasBD();
-        cargarComboBox.consultarContadores(cboxContador);
-        }
-        catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
+
     }//GEN-LAST:event_cboxContadorActionPerformed
 
     private void cboxRegimenFiscalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRegimenFiscalActionPerformed
         // TODO add your handling code here:
+        
+
     }//GEN-LAST:event_cboxRegimenFiscalActionPerformed
+
+    private void cboxRegimenFiscalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxRegimenFiscalMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxRegimenFiscal.removeAllItems();
+        cargarComboBox.consultarRegimenFiscal(cboxRegimenFiscal);
+        if(cboxRegimenFiscal.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero el regimen Fiscal del cliente";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxRegimenFiscalMouseClicked
+
+    private void cboxContadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxContadorMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxContador.removeAllItems();
+        cargarComboBox.consultarContadores(cboxContador);
+        if(cboxContador.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero el contador del cliente";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxContadorMouseClicked
 
     /**
      * @param args the command line arguments
