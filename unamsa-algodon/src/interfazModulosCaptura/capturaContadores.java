@@ -4,6 +4,9 @@
  */
 package interfazModulosCaptura;
 
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -47,11 +50,7 @@ public class capturaContadores extends javax.swing.JFrame {
 
         lblContadorCorreo.setText("Correo:");
 
-        txtContadorNombre.setText("jTextField1");
-
-        txtContadorTelefono.setText("jTextField1");
-
-        txtContadorCorreo.setText("jTextField1");
+        txtContadorNombre.setToolTipText("");
 
         btnContadorCerrar.setText("Cerrar");
         btnContadorCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +130,45 @@ public class capturaContadores extends javax.swing.JFrame {
 
     private void btnContadorRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContadorRegistrarActionPerformed
         // TODO add your handling code here:
+        Boolean guardar = true;
+        String mensaje = "";
+        
+        try{
+            
+        String nombre = txtContadorNombre.getText();
+        String telefono = txtContadorTelefono.getText();
+        String correo = txtContadorCorreo.getText();
+        
+      
+        if (nombre.length()==0){
+            guardar = false;
+            mensaje+="Escriba el nombre, por favor\n";
+        }
+        
+        if (telefono.length()==0){
+            guardar = false;
+            mensaje+="Escriba el telefono, por favor\n";
+        }
+        
+        if (correo.length()==0){
+            guardar = false;
+            mensaje+="Escriba el correo, por favor\n";
+        }
+        
+        if(guardar){
+           consultasBD consulta = new consultasBD();
+           consulta.registrarContador(nombre, telefono, correo);
+           txtContadorNombre.setText("");
+           txtContadorTelefono.setText("");
+           txtContadorCorreo.setText("");
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnContadorRegistrarActionPerformed
 
     /**

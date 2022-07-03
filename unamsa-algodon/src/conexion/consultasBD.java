@@ -5,6 +5,7 @@
 package conexion;
 
 import clases.clientes;
+import clases.contadores;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,12 +21,13 @@ public class consultasBD {
     
     private conexionBD conectar;
     private clientes cliente;
+    private contadores contador;
     private Connection con;
     
     public consultasBD(){
         conectar = new conexionBD();
         cliente = new clientes();
-        
+        contador = new contadores();
     }
     
        
@@ -134,5 +136,29 @@ public class consultasBD {
             }
         }
     }
+    
+     public void registrarContador(String nombre, String telefono, String correo){
+        PreparedStatement ps;
+        String sql;
+        contador.setNombre(nombre);
+        contador.setTelefono(telefono);
+        contador.setCorreo(correo);
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO contadores(nombre, telefono, correo) values(?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, contador.getNombre());
+            ps.setString(2, contador.getTelefono());
+            ps.setString(3, contador.getCorreo());
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }   
 
 }
