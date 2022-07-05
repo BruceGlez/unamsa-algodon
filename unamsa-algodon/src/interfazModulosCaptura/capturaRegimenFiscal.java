@@ -4,6 +4,9 @@
  */
 package interfazModulosCaptura;
 
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -57,9 +60,25 @@ public class capturaRegimenFiscal extends javax.swing.JFrame {
             }
         });
 
-        regTxtNombre.setText("jTextField1");
+        regTxtNombre.setText("asd");
+        regTxtNombre.setToolTipText("");
+        regTxtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regTxtNombreActionPerformed(evt);
+            }
+        });
 
-        cboxRegISR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxRegISR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
+        cboxRegISR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxRegISRMouseClicked(evt);
+            }
+        });
+        cboxRegISR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxRegISRActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,9 +135,55 @@ public class capturaRegimenFiscal extends javax.swing.JFrame {
 
     private void btnRegRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegRegistrarActionPerformed
         // TODO add your handling code here:
-       
+        Boolean guardar = true;
+        String mensaje = "";
+        
+        try{
+            
+        String nombre = regTxtNombre.getText();
+        
+        if (nombre.length()==0){
+            guardar = false;
+            mensaje+="Escriba el nombre, por favor\n";
+        }
+           if(cboxRegISR.getItemCount() == 0){
+            
+            mensaje="Escoja un Contador Porfavor";
+            JOptionPane.showMessageDialog(null, mensaje);
+        
+        }
+        
+        String f = (String) cboxRegISR.getSelectedItem();
+        float retencion = Float.parseFloat(f);
+        
+        JOptionPane.showMessageDialog(null, nombre + retencion);
+        if(guardar){
+           consultasBD consulta = new consultasBD();
+           consulta.registrarRegimenFiscal(nombre, retencion);
+           regTxtNombre.setText("");
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
 
     }//GEN-LAST:event_btnRegRegistrarActionPerformed
+
+    private void cboxRegISRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxRegISRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxRegISRActionPerformed
+
+    private void cboxRegISRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxRegISRMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_cboxRegISRMouseClicked
+
+    private void regTxtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regTxtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_regTxtNombreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,10 +6,12 @@ package conexion;
 
 import clases.clientes;
 import clases.contadores;
+import clases.regimenFiscal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashSet;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -22,6 +24,7 @@ public class consultasBD {
     private conexionBD conectar;
     private clientes cliente;
     private contadores contador;
+    private regimenFiscal regFiscal;
     private Connection con;
     
     public consultasBD(){
@@ -161,4 +164,26 @@ public class consultasBD {
         }
     }   
 
+        public void registrarRegimenFiscal(String nombre, Float retencionISR){
+        PreparedStatement ps;
+        String sql;
+        
+        regFiscal.setNombre(nombre);
+        regFiscal.setRetencionISR(retencionISR);
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO regimenfiscal(nombre, retencion) values(?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, regFiscal.getNombre());
+            ps.setFloat(2, regFiscal.getRetencionISR());
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
 }
