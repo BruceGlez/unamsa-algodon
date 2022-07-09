@@ -8,18 +8,25 @@ import conexion.conexionBD;
 import interfazModulosPrincipal.interfazPrincipal;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.System.Logger.Level;
 import java.util.HashMap;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 //import javax.servlet.ServletOutPutStream;
 import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -164,23 +171,40 @@ public class interfazReportes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         conexionBD conexion = new conexionBD();
-       try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\reporteClientes.jasper"));
-           JasperDesign jd = JRXmlLoader.load(in);
-           String sql = "select * from clientes";
-           JRDesignQuery newQuery = new JRDesignQuery();
-           newQuery.setText(sql);
-           jd.setQuery(newQuery);
-           JasperReport jr = JasperCompileManager.compileReport(jd);
-           HashMap para = new HashMap();
-           JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
-           JasperViewer.viewReport(j, false);
+       //try{
+           //InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\reporteClientes.jasper"));
+           //JasperDesign jd = JRXmlLoader.load(in);
+           //String sql = "select * from clientes";
+           //JRDesignQuery newQuery = new JRDesignQuery();
+           //newQuery.setText(sql);
+           //jd.setQuery(newQuery);
+           //JasperReport jr = JasperCompileManager.compileReport(jd);
+           //HashMap para = new HashMap();
+           //JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
+           //JasperViewer.viewReport(j, false);
            //OutputStream os = new FileOutputStream(new File("C:\\Users"));
            //JasperExportManager.exportReportToPdfFile(j, os);
            
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null, e);
-       }
+           String path = "C:/Users/bruce/OneDrive/Documents/NetBeansProjects/unamsa-algodon/unamsa-algodon/src/interfazModulosReportes/reporteClientes.jasper";
+           JasperReport jr = null;
+       
+           
+           
+           try{
+               jr=(JasperReport) JRLoader.loadObjectFromFile(path);
+               JasperPrint jp = JasperFillManager.fillReport(jr,null,conexion.getConexion());
+               JasperViewer jv = new JasperViewer(jp);
+               jv.setVisible(true);
+               jv.setTitle(path);
+           }
+           catch(JRException ex){
+               JOptionPane.showMessageDialog(null, ex);
+           }
+           
+           
+       //}catch(Exception e){
+          // JOptionPane.showMessageDialog(null, e);
+       //}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
