@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c7d7ca6-7239-4bc6-a2f3-c08c91069e3f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[select * from contadores;]]>
+	</queryString>
+	<field name="idcontadores" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="idcontadores_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{idcontadores}]]></variableExpression>
+	</variable>
+	<variable name="idcontadores_2" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{idcontadores}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="54" y="10" width="68" height="62" uuid="279aa9a6-1afc-46ee-abef-1478a0def90e"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="158" y="10" width="302" height="19" uuid="7ec2e03a-5dc0-41a6-95d5-53fbf338e0e5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[UNION ALGODONERA MOCTEZUMA SA DE CV 				]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="29" width="216" height="19" uuid="9ed915b9-42f7-405c-bff4-86439769dda0"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="48" width="216" height="19" uuid="05add628-fad3-4312-a1f2-857f192f4468"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="78" y="0" width="463" height="35" uuid="71bdca11-42ee-4433-b555-1a625c8e7fef"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE CONTADORES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="87" y="41" width="100" height="20" uuid="26fc99d8-9718-4e13-843a-9618eec4fa28"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="187" y="41" width="100" height="20" uuid="fd792aea-2855-482e-b5d3-6eac3d8bf2f9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="287" y="41" width="100" height="20" uuid="4b486dd6-e66f-4c4f-a09c-6689a4913aa5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="41" width="123" height="20" uuid="8452fd47-9743-4782-b6ff-68b795b883c3"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CORREO:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<rectangle>
+				<reportElement x="87" y="0" width="423" height="31" uuid="2d032830-b65f-4994-b126-518d48ff61a0"/>
+			</rectangle>
+			<textField>
+				<reportElement x="87" y="0" width="100" height="31" uuid="e56e3eee-87bd-48aa-952f-d8c1702eb921"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idcontadores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="187" y="0" width="100" height="31" uuid="270a4ec8-e109-4737-b456-775a2c396354"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="0" width="100" height="31" uuid="9c6309dd-3528-495d-ba21-17a5caaaaa48"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="0" width="123" height="31" uuid="e9802b77-88db-4383-9e13-2193c3b5015e"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="128" y="22" width="100" height="20" uuid="066507a2-6397-4ca6-9d0f-d32e3b389630"/>
+				<textFieldExpression><![CDATA[$V{idcontadores_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="54" y="22" width="100" height="20" uuid="8b343579-d97e-4b8b-b532-4ff27ceb26ce"/>
+				<text><![CDATA[Hay un total de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="22" width="100" height="20" uuid="bca5ddf0-4893-4550-8e1c-03b63493ce44"/>
+				<text><![CDATA[Contadores.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
