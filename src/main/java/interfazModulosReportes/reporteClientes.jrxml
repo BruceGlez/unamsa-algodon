@@ -58,14 +58,14 @@
 			<staticText>
 				<reportElement x="195" y="19" width="216" height="19" uuid="e921329c-021d-40b2-bcdb-ccb2e078ac89"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font fontName="Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="195" y="38" width="216" height="19" uuid="49b0261d-1556-4dec-a8b9-8e75366bffba"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font fontName="Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
 			</staticText>

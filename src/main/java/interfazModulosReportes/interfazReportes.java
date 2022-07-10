@@ -204,6 +204,24 @@ public class interfazReportes extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+               conexionBD conexion = new conexionBD();
+       try{
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteContadores.jrxml"));
+           JasperDesign jd = JRXmlLoader.load(in);
+           String sql = "select * from contadores";
+           JRDesignQuery newQuery = new JRDesignQuery();
+           newQuery.setText(sql);
+           jd.setQuery(newQuery);
+           JasperReport jr = JasperCompileManager.compileReport(jd);
+           HashMap para = new HashMap();
+           JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
+           JasperViewer.viewReport(j, false);
+           //OutputStream os = new FileOutputStream(new File("C:\\Users"));
+           //JasperExportManager.exportReportToPdfFile(j, os);
+           
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

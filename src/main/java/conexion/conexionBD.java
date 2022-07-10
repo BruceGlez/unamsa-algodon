@@ -20,7 +20,7 @@ public class conexionBD {
     
     public static final String URL = "jdbc:mysql://localhost:3306/mydb?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
     public static final String USER = "root";
-    public static final String CLAVE ="root";
+    public static final String CLAVE ="root";    
    
     public Connection getConexion(){
         Connection con = null;
@@ -35,5 +35,6 @@ public class conexionBD {
         }
         return con;
     }
+    
 }
 
