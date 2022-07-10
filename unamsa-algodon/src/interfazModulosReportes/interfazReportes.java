@@ -4,6 +4,7 @@
  */
 package interfazModulosReportes;
 
+import static com.mysql.cj.conf.PropertyKey.logger;
 import conexion.conexionBD;
 import interfazModulosPrincipal.interfazPrincipal;
 import java.io.File;
@@ -13,7 +14,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.System.Logger.Level;
 import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 //import javax.servlet.ServletOutPutStream;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -26,6 +29,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 /**
@@ -170,7 +174,7 @@ public class interfazReportes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        conexionBD conexion = new conexionBD();
+       conexionBD conexion = new conexionBD();
        //try{
            //InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\reporteClientes.jasper"));
            //JasperDesign jd = JRXmlLoader.load(in);
@@ -185,22 +189,62 @@ public class interfazReportes extends javax.swing.JFrame {
            //OutputStream os = new FileOutputStream(new File("C:\\Users"));
            //JasperExportManager.exportReportToPdfFile(j, os);
            
-           String path = "C:/Users/bruce/OneDrive/Documents/NetBeansProjects/unamsa-algodon/unamsa-algodon/src/interfazModulosReportes/reporteClientes.jasper";
-           JasperReport jr = null;
+           //String path = "C:/Users/bruce/OneDrive/Documents/NetBeansProjects/unamsa-algodon/unamsa-algodon/src/interfazModulosReportes/reporteClientes.jasper";
+           //JasperReport jr = null;
        
            
            
-           try{
+           /*try{
                jr=(JasperReport) JRLoader.loadObjectFromFile(path);
                JasperPrint jp = JasperFillManager.fillReport(jr,null,conexion.getConexion());
                JasperViewer jv = new JasperViewer(jp);
                jv.setVisible(true);
                jv.setTitle(path);
+               //BasicConfigurator.configure();
+               
            }
            catch(JRException ex){
                JOptionPane.showMessageDialog(null, ex);
-           }
+           }*/
            
+       /* try{
+ 
+       String reportPath = "C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\reporteClientes.jrxml";
+       JasperReport jr = JasperCompileManager.compileReport(reportPath);
+       JasperPrint jp = JasperFillManager.fillReport(jr,null, conexion.getConexion());
+       JasperViewer.viewReport(jp);
+       conexion.getConexion().close();
+}
+ 
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }*/
+           
+       String reportSource = "C:/Users/bruce/OneDrive/Documents/NetBeansProjects/unamsa-algodon/unamsa-algodon/src/interfazModulosReportes/reporteClientes.jrxml";
+String reportDest = "./report/results/HelloReportWorld.html";
+
+Map<String, Object> params = new HashMap<String, Object>();
+
+try
+{
+    JasperReport jasperReport =
+        JasperCompileManager.compileReport(reportSource);
+
+    JasperPrint jasperPrint =
+        JasperFillManager.fillReport(
+            jasperReport, params, new JREmptyDataSource());
+
+    JasperExportManager.exportReportToHtmlFile(
+        jasperPrint, reportDest);
+
+    JasperViewer.viewReport(jasperPrint);
+}
+
+catch (JRException ex)
+{
+    ex.printStackTrace();
+}
            
        //}catch(Exception e){
           // JOptionPane.showMessageDialog(null, e);
