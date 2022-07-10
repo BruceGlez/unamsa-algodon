@@ -5,6 +5,7 @@
 package conexion;
 
 import clases.clientes;
+import clases.compras;
 import clases.contadores;
 import clases.regimenFiscal;
 import java.sql.Connection;
@@ -25,6 +26,7 @@ public class consultasBD {
     private clientes cliente;
     private contadores contador;
     private regimenFiscal regFiscal;
+    private compras compras;
     private Connection con;
     
     public consultasBD(){
@@ -184,6 +186,111 @@ public class consultasBD {
             JOptionPane.showMessageDialog(null, "Se han insertado los datos");
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
+
+    public void registrarCompra(int compra, int pacas, String fechaVenc, String fechaLiq, Float total, int cliente, int comprador) {
+        
+        PreparedStatement ps;
+        String sql;
+        
+        compras.setCompra(compra);
+        compras.setCliente(cliente);
+        compras.setPacas(pacas);
+        compras.setFechaLiquidacion(fechaLiq);
+        compras.setFechaPago(fechaVenc);
+        compras.setTotal(total);
+        compras.setComprador(comprador);
+     
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO compras(noCompra, pacas, fechaPago, fechaLiquidacion, total, fkCliente, fkClienteComprador) values(?,?,?,?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setInt(1, compras.getCompra());
+            ps.setInt(2, compras.getPacas());
+            ps.setString(3, compras.getFechaPago());
+            ps.setString(4, compras.getFechaLiquidacion());
+            ps.setFloat(5, compras.getTotal());
+            ps.setInt(6, compras.getCliente());
+            ps.setInt(7, compras.getComprador());
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
+
+    public void consultaClientes(JComboBox cboxCompraCliente) {
+        PreparedStatement ps;
+        String sql;
+        ResultSet result = null;
+        
+        try{
+            con = conectar.getConexion();
+            sql = "SELECT nombre, idclientes FROM clientes ORDER BY nombre ASC";
+            
+            ps = con.prepareStatement(sql);
+            result = ps.executeQuery();
+            
+                  
+           while(result.next()){
+                cboxCompraCliente.addItem(result.getString("idclientes")+"-"+result.getString("nombre"));
+                
+            }
+            
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        } finally {
+            if(con!=null){
+                try{
+                    con.close();
+                    result.close();
+                    
+                    con = null;
+                    result = null;
+                }catch (SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                }
+            }
+        }
+    }
+
+    public void consultaCompradores(JComboBox cboxComprasComprador) {
+        PreparedStatement ps;
+        String sql;
+        ResultSet result = null;
+        
+        try{
+            con = conectar.getConexion();
+            sql = "SELECT nombre, idcompradores FROM compradores ORDER BY nombre ASC";
+            
+            ps = con.prepareStatement(sql);
+            result = ps.executeQuery();
+            
+                  
+           while(result.next()){
+                cboxComprasComprador.addItem(result.getString("idcompradores")+"-"+result.getString("nombre"));
+                
+            }
+            
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        } finally {
+            if(con!=null){
+                try{
+                    con.close();
+                    result.close();
+                    
+                    con = null;
+                    result = null;
+                }catch (SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                }
+            }
         }
     }
 }

@@ -4,6 +4,9 @@
  */
 package interfazModulosCaptura;
 
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -59,21 +62,32 @@ public class capturaCompras extends javax.swing.JFrame {
 
         lblCompraTotal.setText("Total:");
 
-        txtCompraNoCompra.setText("jTextField1");
-
-        txtCompraFechaLiq.setText("jTextField1");
-
-        txtCompraPacas.setText("jTextField1");
-
-        txtCompraFechaVenc.setText("jTextField1");
-
-        txtCompraTotal.setText("jTextField1");
+        txtCompraPacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCompraPacasActionPerformed(evt);
+            }
+        });
 
         lblCompraCliente.setText("Cliente:");
 
         cboxCompraCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxCompraCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxCompraClienteMouseClicked(evt);
+            }
+        });
+        cboxCompraCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxCompraClienteActionPerformed(evt);
+            }
+        });
 
         btnCompraRegistrar.setText("Registrar");
+        btnCompraRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraRegistrarActionPerformed(evt);
+            }
+        });
 
         btnCompraCerrar.setText("Cerrar");
         btnCompraCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +99,11 @@ public class capturaCompras extends javax.swing.JFrame {
         lblComprasComprador.setText("Comprador: ");
 
         cboxComprasComprador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxComprasComprador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxComprasCompradorMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,14 +124,15 @@ public class capturaCompras extends javax.swing.JFrame {
                                     .addGap(179, 179, 179)
                                     .addComponent(lblCompraTotal))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblCompraNoCompra)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(32, 32, 32)
+                                            .addComponent(lblCompraPacas))
+                                        .addComponent(lblCompraNoCompra))
                                     .addGap(18, 18, 18)
-                                    .addComponent(txtCompraNoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(32, 32, 32)
-                                    .addComponent(lblCompraPacas)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtCompraPacas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCompraNoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtCompraPacas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(40, 40, 40)
                             .addComponent(btnCompraRegistrar)
@@ -185,6 +205,111 @@ public class capturaCompras extends javax.swing.JFrame {
         verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCompraCerrarActionPerformed
+
+    private void btnCompraRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraRegistrarActionPerformed
+        // TODO add your handling code here:
+        Boolean guardar = true;
+        String mensaje = "";
+        
+        try{
+            
+        String fechaLiq = txtCompraFechaLiq.getText();
+        String fechaVenc = txtCompraFechaVenc.getText();
+        int noCompra = Integer.parseInt(txtCompraNoCompra.getText());
+        int pacas = Integer.parseInt(txtCompraPacas.getText());
+        Float total = Float.parseFloat(txtCompraTotal.getText());
+        
+        if (fechaLiq.length()==0){
+            guardar = false;
+            mensaje+="Escriba la fecha de liquidacion, por favor\n";
+        }
+        if (fechaVenc.length()==0){
+            guardar = false;
+            mensaje+="Escriba la fecha de vencimiento, por favor\n";
+        }
+        if (noCompra==0){
+            guardar = false;
+            mensaje+="Escriba el numero de compra, por favor\n";
+        }
+        if (pacas==0){
+            guardar = false;
+            mensaje+="Escriba la cantidad de Pacas, por favor\n";
+        }
+        if (total==0){
+        guardar = false;
+        mensaje+="Escriba el total de la compra, por favor\n";
+        }
+
+            String c = (String) cboxCompraCliente.getSelectedItem();
+            char d = c.charAt(0);
+            int cliente = Character.getNumericValue(d);
+            
+            String f = (String) cboxComprasComprador.getSelectedItem();
+            char g = f.charAt(0);
+            int comprador = Character.getNumericValue(g);
+        
+        if(guardar){
+           consultasBD consulta = new consultasBD();
+           consulta.registrarCompra(noCompra, pacas, fechaVenc, fechaLiq, total, cliente, comprador);
+           txtCompraFechaLiq.setText("");
+           txtCompraFechaVenc.setText("");
+           txtCompraNoCompra.setText("");
+           txtCompraPacas.setText("");
+           txtCompraTotal.setText("");
+           
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnCompraRegistrarActionPerformed
+
+    private void txtCompraPacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCompraPacasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCompraPacasActionPerformed
+
+    private void cboxCompraClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCompraClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxCompraClienteActionPerformed
+
+    private void cboxCompraClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxCompraClienteMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxCompraCliente.removeAllItems();
+        cargarComboBox.consultaClientes(cboxCompraCliente);
+        if(cboxCompraCliente.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero el cliente";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxCompraClienteMouseClicked
+
+    private void cboxComprasCompradorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxComprasCompradorMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxComprasComprador.removeAllItems();
+        cargarComboBox.consultaCompradores(cboxComprasComprador);
+        if(cboxComprasComprador.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero el comprador";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxComprasCompradorMouseClicked
 
     /**
      * @param args the command line arguments

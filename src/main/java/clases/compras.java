@@ -10,13 +10,16 @@ package clases;
  */
 public class compras {
     
+
+    
     int id;
     String fechaPago;
     String fechaLiquidacion;
-    int idFactura;
-    int idCliente;
+    int compra;
     int pacas;
     float total;
+    int cliente;
+    int comprador;
 
     public int getId() {
         return id;
@@ -42,20 +45,12 @@ public class compras {
         this.fechaLiquidacion = fechaLiquidacion;
     }
 
-    public int getIdFactura() {
-        return idFactura;
+    public int getCompra() {
+        return compra;
     }
 
-    public void setIdFactura(int idFactura) {
-        this.idFactura = idFactura;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setCompra(int compra) {
+        this.compra = compra;
     }
 
     public int getPacas() {
@@ -72,6 +67,22 @@ public class compras {
 
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    public int getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(int cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(int comprador) {
+        this.comprador = comprador;
     }
     
     
