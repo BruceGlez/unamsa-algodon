@@ -4,6 +4,11 @@
  */
 package interfazModulosCaptura;
 
+import clases.facturas;
+import clases.pagos;
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -35,6 +40,8 @@ public class capturaFacturas extends javax.swing.JFrame {
         lblFacturasTotal = new javax.swing.JLabel();
         btnFacturasCerrar = new javax.swing.JButton();
         btnFacturasRegistrar = new javax.swing.JButton();
+        lblFacturaCompra = new javax.swing.JLabel();
+        cboxCompraFacturas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,11 +52,16 @@ public class capturaFacturas extends javax.swing.JFrame {
 
         lblFacturasCliente.setText("Cliente Relacionado:");
 
-        cboxFacturasCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtFacturasFolio.setText("jTextField1");
-
-        txtFacturasTotal.setText("jTextField1");
+        cboxFacturasCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxFacturasClienteMouseClicked(evt);
+            }
+        });
+        cboxFacturasCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxFacturasClienteActionPerformed(evt);
+            }
+        });
 
         lblFacturasTotal.setText("Total:");
 
@@ -67,6 +79,19 @@ public class capturaFacturas extends javax.swing.JFrame {
             }
         });
 
+        lblFacturaCompra.setText("Compra Relacionada:");
+
+        cboxCompraFacturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxCompraFacturasMouseClicked(evt);
+            }
+        });
+        cboxCompraFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxCompraFacturasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,25 +102,28 @@ public class capturaFacturas extends javax.swing.JFrame {
                         .addGap(65, 65, 65)
                         .addComponent(lblFacturasTitulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFacturasCliente)
-                            .addComponent(lblFacturasFolio))
+                        .addGap(109, 109, 109)
+                        .addComponent(lblFacturasTotal)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxFacturasCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFacturasFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtFacturasTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFacturaCompra)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblFacturasCliente)
+                                .addComponent(lblFacturasFolio)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFacturasFolio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cboxFacturasCliente, 0, 214, Short.MAX_VALUE)
+                            .addComponent(cboxCompraFacturas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
                         .addComponent(btnFacturasRegistrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFacturasTotal)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFacturasTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnFacturasCerrar))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                        .addComponent(btnFacturasCerrar)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,16 +137,20 @@ public class capturaFacturas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFacturasCliente)
-                    .addComponent(cboxFacturasCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                    .addComponent(cboxFacturasCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFacturaCompra)
+                    .addComponent(cboxCompraFacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFacturasTotal)
-                    .addComponent(txtFacturasTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                    .addComponent(txtFacturasTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFacturasCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFacturasRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -134,7 +166,124 @@ public class capturaFacturas extends javax.swing.JFrame {
 
     private void btnFacturasRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturasRegistrarActionPerformed
         // TODO add your handling code here:
+        
+        Boolean guardar = true;
+        String mensaje = "";
+        String s = "";
+        String t = "";
+        
+        try{
+            
+        String folioFactura = txtFacturasFolio.getText();  
+        float totalFactura = Float.parseFloat(txtFacturasTotal.getText());
+        int compraRelacionada = 0;
+        int clienteRelacionado = 0;
+        
+       if (folioFactura.length()==0){
+            guardar = false;
+            mensaje+="Escriba el flio de la factura, por favor\n";
+        }
+        if (totalFactura==0){
+            guardar = false;
+            mensaje+="Escriba el monto total en DLS, por favor\n";
+        }
+
+            String c = (String) cboxFacturasCliente.getSelectedItem();
+            char d = c.charAt(0);
+            char e = c.charAt(1);
+            
+            if(Character.isDigit(e)){
+                
+                t = new StringBuilder().append(d).append(e).toString();
+                clienteRelacionado = Integer.parseInt(t);
+            }
+            else{
+                t = new StringBuilder().append(d).toString();
+                clienteRelacionado = Integer.parseInt(t);
+            }
+            
+            
+
+            
+            String f = (String) cboxCompraFacturas.getSelectedItem();
+            char g = f.charAt(0);
+            char h = f.charAt(1);
+            
+            if(Character.isDigit(h)){
+                
+                s = new StringBuilder().append(g).append(h).toString();
+                compraRelacionada = Integer.parseInt(s);
+            }
+            else{
+                s = new StringBuilder().append(g).toString();
+                compraRelacionada = Integer.parseInt(s);
+            }
+            
+        if(guardar){
+            
+           consultasBD consulta = new consultasBD();
+           
+           facturas factura = new facturas(folioFactura, totalFactura, clienteRelacionado, compraRelacionada);
+           consulta.registrarFactura(factura);
+           
+           txtFacturasFolio.setText("");
+           txtFacturasTotal.setText("");
+
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+     }
+        catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       } 
     }//GEN-LAST:event_btnFacturasRegistrarActionPerformed
+
+    private void cboxFacturasClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxFacturasClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxFacturasClienteActionPerformed
+
+    private void cboxFacturasClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxFacturasClienteMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxFacturasCliente.removeAllItems();
+        cargarComboBox.consultaClientes(cboxFacturasCliente);
+        if(cboxFacturasCliente.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero el cliente";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_cboxFacturasClienteMouseClicked
+
+    private void cboxCompraFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCompraFacturasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxCompraFacturasActionPerformed
+
+    private void cboxCompraFacturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxCompraFacturasMouseClicked
+        // TODO add your handling code here:
+        
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxCompraFacturas.removeAllItems();
+        cargarComboBox.consultaCompras(cboxCompraFacturas);
+        if(cboxCompraFacturas.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero la compra";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxCompraFacturasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -174,7 +323,9 @@ public class capturaFacturas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFacturasCerrar;
     private javax.swing.JButton btnFacturasRegistrar;
+    private javax.swing.JComboBox<String> cboxCompraFacturas;
     private javax.swing.JComboBox<String> cboxFacturasCliente;
+    private javax.swing.JLabel lblFacturaCompra;
     private javax.swing.JLabel lblFacturasCliente;
     private javax.swing.JLabel lblFacturasFolio;
     private javax.swing.JLabel lblFacturasTitulo;

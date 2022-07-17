@@ -10,10 +10,20 @@ package clases;
  */
 public class facturas {
     
+    
+    
     int id;
-    int idCliente;
     String Folio;
     float Total;
+    int idCliente;
+    int idCompra;
+
+    public facturas(String Folio, float Total, int idCliente, int idCompra) {
+        this.Folio = Folio;
+        this.Total = Total;
+        this.idCliente = idCliente;
+        this.idCompra = idCompra;
+    }
 
     public int getId() {
         return id;
@@ -21,14 +31,6 @@ public class facturas {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
     }
 
     public String getFolio() {
@@ -46,6 +48,23 @@ public class facturas {
     public void setTotal(float Total) {
         this.Total = Total;
     }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdCompra() {
+        return idCompra;
+    }
+
+    public void setIdCompra(int idCompra) {
+        this.idCompra = idCompra;
+    }
+  
     
-    
+
 }

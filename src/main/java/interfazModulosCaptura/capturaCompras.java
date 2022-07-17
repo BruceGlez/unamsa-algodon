@@ -63,6 +63,12 @@ public class capturaCompras extends javax.swing.JFrame {
 
         lblCompraTotal.setText("Total:");
 
+        txtCompraFechaLiq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCompraFechaLiqActionPerformed(evt);
+            }
+        });
+
         txtCompraPacas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCompraPacasActionPerformed(evt);
@@ -207,69 +213,7 @@ public class capturaCompras extends javax.swing.JFrame {
 
     private void btnCompraRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraRegistrarActionPerformed
         // TODO add your handling code here:
-        Boolean guardar = true;
-        String mensaje = "";
         
-        try{
-            
-        String noCompra = txtCompraNoCompra.getText();  
-        String fechaLiq = txtCompraFechaLiq.getText();
-        String fechaVenc = txtCompraFechaVenc.getText();
-        int pacas = Integer.parseInt(txtCompraPacas.getText());
-        float total = Float.parseFloat(txtCompraTotal.getText());
-         //int total = Integer.parseInt(txtCompraTotal.getText());
-         
-       if (fechaLiq.length()==0){
-            guardar = false;
-            mensaje+="Escriba la fecha de liquidacion, por favor\n";
-        }
-        if (fechaVenc.length()==0){
-            guardar = false;
-            mensaje+="Escriba la fecha de vencimiento, por favor\n";
-        }
-        if (noCompra.length()==0){
-            guardar = false;
-            mensaje+="Escriba el numero de compra, por favor\n";
-        }
-        if (pacas==0){
-            guardar = false;
-            mensaje+="Escriba la cantidad de Pacas, por favor\n";
-        }
-        if (total == 0){
-        guardar = false;
-        mensaje+="Escriba el total de la compra, por favor\n";
-        }
-
-            String c = (String) cboxCompraCliente.getSelectedItem();
-            char d = c.charAt(0);
-            int cliente = Character.getNumericValue(d);
-            
-            String f = (String) cboxComprasComprador.getSelectedItem();
-            char g = f.charAt(0);
-            int comprador = Character.getNumericValue(g);
-            
-            
-        if(guardar){
-           consultasBD consulta = new consultasBD();
-           JOptionPane.showMessageDialog(null, "compra: " +  noCompra + "\n" + "Fecha de Venc: " + fechaVenc + "\n" + "Fecha de Liq: " + fechaLiq + "\n" + "cliente: " + cliente + "\n" + "pacas: " + pacas + "\n" + "comprador: " + comprador + "\n" + "total: " + total);
-           compras compras = new compras(noCompra, fechaVenc, fechaLiq, cliente, pacas, (int) total, comprador);
-           
-           consulta.registrarCompra(compras);
-           
-           txtCompraFechaLiq.setText("");
-           txtCompraFechaVenc.setText("");
-           txtCompraNoCompra.setText("");
-           txtCompraPacas.setText("");
-           txtCompraTotal.setText("");
-           
-        }
-           else{
-               JOptionPane.showMessageDialog(null, mensaje);
-           }
-     }
-        catch(Exception e){
-           JOptionPane.showMessageDialog(null, e);
-       }
 
     }//GEN-LAST:event_btnCompraRegistrarActionPerformed
 
@@ -316,6 +260,10 @@ public class capturaCompras extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_cboxComprasCompradorMouseClicked
+
+    private void txtCompraFechaLiqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCompraFechaLiqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCompraFechaLiqActionPerformed
 
     /**
      * @param args the command line arguments

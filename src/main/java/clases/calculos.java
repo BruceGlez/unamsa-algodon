@@ -10,4 +10,11 @@ package clases;
  */
 public class calculos {
     
+    
+    public float conversionTC(float TC, float montoDLS){
+        
+        float montoPesos = TC * montoDLS;
+        
+        return montoPesos;
+    }
 }

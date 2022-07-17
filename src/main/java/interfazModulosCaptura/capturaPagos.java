@@ -4,6 +4,12 @@
  */
 package interfazModulosCaptura;
 
+import clases.calculos;
+import clases.compras;
+import clases.pagos;
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -29,14 +35,11 @@ public class capturaPagos extends javax.swing.JFrame {
         lblPagosTitulo = new javax.swing.JLabel();
         lblPagosCompra = new javax.swing.JLabel();
         lblPagosMoneda = new javax.swing.JLabel();
-        lblPagosDivision = new javax.swing.JLabel();
         lblPagosMontoPagado = new javax.swing.JLabel();
         lblPagosFactura = new javax.swing.JLabel();
         lblPagosTC = new javax.swing.JLabel();
-        lblPagosCuentaBancaria = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listPagosMoneda = new javax.swing.JList<>();
-        cboxPagosCuentaBancaria = new javax.swing.JComboBox<>();
         txtPagosMontoPagado = new javax.swing.JTextField();
         txtPagosFecha = new javax.swing.JTextField();
         lblPagosFecha = new javax.swing.JLabel();
@@ -47,7 +50,6 @@ public class capturaPagos extends javax.swing.JFrame {
         btnPagosRegistrar = new javax.swing.JButton();
         btnPagosCerrar = new javax.swing.JButton();
         cboxPagosCompra = new javax.swing.JComboBox<>();
-        cboxPagosDivison = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,38 +60,46 @@ public class capturaPagos extends javax.swing.JFrame {
 
         lblPagosMoneda.setText("Moneda:");
 
-        lblPagosDivision.setText("Division Relacionada:");
-
         lblPagosMontoPagado.setText("Monto Pagado:");
 
         lblPagosFactura.setText("Factura Relacionada:");
 
         lblPagosTC.setText("T.C.");
 
-        lblPagosCuentaBancaria.setText("Cuenta Bancaria:");
-
         listPagosMoneda.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Pesos", "Dolares" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listPagosMoneda);
 
-        cboxPagosCuentaBancaria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtPagosMontoPagado.setText("jTextField1");
-
-        txtPagosFecha.setText("jTextField5");
+        txtPagosMontoPagado.setEditable(false);
+        txtPagosMontoPagado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPagosMontoPagadoMouseClicked(evt);
+            }
+        });
+        txtPagosMontoPagado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPagosMontoPagadoActionPerformed(evt);
+            }
+        });
 
         lblPagosFecha.setText("Fecha de Pago:");
 
-        cboxPagosFactura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtPagosTC.setText("jTextField1");
+        cboxPagosFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxPagosFacturaMouseClicked(evt);
+            }
+        });
+        cboxPagosFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxPagosFacturaActionPerformed(evt);
+            }
+        });
 
         lblPagosMontoDLS.setText("Monto Pagado en Dls:");
 
-        txtPagosMontoDLS.setText("jTextField7");
         txtPagosMontoDLS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPagosMontoDLSActionPerformed(evt);
@@ -110,9 +120,16 @@ public class capturaPagos extends javax.swing.JFrame {
             }
         });
 
-        cboxPagosCompra.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cboxPagosDivison.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboxPagosCompra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxPagosCompraMouseClicked(evt);
+            }
+        });
+        cboxPagosCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxPagosCompraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,31 +158,30 @@ public class capturaPagos extends javax.swing.JFrame {
                             .addComponent(lblPagosFecha)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPagosDivision)
                                     .addComponent(lblPagosCompra)
                                     .addComponent(lblPagosMoneda))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboxPagosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboxPagosDivison, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblPagosCuentaBancaria)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cboxPagosCuentaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtPagosFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPagosTC)
-                            .addComponent(lblPagosFactura))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboxPagosCompra, 0, 127, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1))))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(lblPagosFactura)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cboxPagosFactura, 0, 127, Short.MAX_VALUE)
-                            .addComponent(txtPagosTC)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(cboxPagosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtPagosFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(67, 67, 67))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblPagosTC)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPagosTC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addComponent(lblPagosMontoDLS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPagosMontoDLS)))
@@ -183,26 +199,18 @@ public class capturaPagos extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPagosCuentaBancaria)
-                            .addComponent(cboxPagosCuentaBancaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPagosFactura)
-                            .addComponent(cboxPagosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(80, 80, 80)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPagosTC)
                             .addComponent(txtPagosTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPagosCompra)
-                            .addComponent(cboxPagosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPagosDivision)
-                            .addComponent(cboxPagosDivison, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(cboxPagosCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblPagosFactura)
+                                .addComponent(cboxPagosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPagosMoneda)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -212,7 +220,7 @@ public class capturaPagos extends javax.swing.JFrame {
                     .addComponent(txtPagosMontoPagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPagosMontoDLS)
                     .addComponent(txtPagosMontoDLS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPagosRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPagosCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -228,6 +236,68 @@ public class capturaPagos extends javax.swing.JFrame {
 
     private void btnPagosRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosRegistrarActionPerformed
         // TODO add your handling code here:
+        Boolean guardar = true;
+        String mensaje = "";
+        
+        try{
+            
+        String fechaPago = txtPagosFecha.getText();  
+        float montoDLS = Float.parseFloat(txtPagosMontoDLS.getText());
+        float montoPagado = Float.parseFloat(txtPagosMontoPagado.getText());
+        float tipoCambio  = Float.parseFloat(txtPagosTC.getText());
+        String moneda = listPagosMoneda.getSelectedValue();
+
+         
+       if (fechaPago.length()==0){
+            guardar = false;
+            mensaje+="Escriba la fecha de pago, por favor\n";
+        }
+        if (montoDLS==0){
+            guardar = false;
+            mensaje+="Escriba el monto total en DLS, por favor\n";
+        }
+        if (montoPagado==0){
+            guardar = false;
+            mensaje+="Escriba el monto pagado, por favor\n";
+        }
+        if (tipoCambio==0){
+            guardar = false;
+            mensaje+="Escriba el tipo de cambio, por favor\n";
+        }
+        if (moneda.length() == 0){
+        guardar = false;
+        mensaje+="Seleccione la moneda, por favor\n";
+        }
+
+            String c = (String) cboxPagosCompra.getSelectedItem();
+            char d = c.charAt(0);
+            int compraRelacionada = Character.getNumericValue(d);
+            
+            String f = (String) cboxPagosFactura.getSelectedItem();
+            char g = f.charAt(0);
+            int facturaRelacionada = Character.getNumericValue(g);
+            
+            
+        if(guardar){
+           consultasBD consulta = new consultasBD();
+           
+           pagos pago = new pagos(compraRelacionada, (float) montoPagado, facturaRelacionada, fechaPago, moneda, tipoCambio, montoDLS);
+                      
+           consulta.registrarPago(pago);
+           
+           txtPagosFecha.setText("");
+           txtPagosMontoDLS.setText("");
+           txtPagosMontoPagado.setText("");
+           txtPagosTC.setText("");
+           
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+     }
+        catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
     }//GEN-LAST:event_btnPagosRegistrarActionPerformed
 
     private void btnPagosCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosCerrarActionPerformed
@@ -237,6 +307,72 @@ public class capturaPagos extends javax.swing.JFrame {
         verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnPagosCerrarActionPerformed
+
+    private void cboxPagosCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxPagosCompraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxPagosCompraActionPerformed
+
+    private void cboxPagosCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxPagosCompraMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxPagosCompra.removeAllItems();
+        cargarComboBox.consultaCompras(cboxPagosCompra);
+        if(cboxPagosCompra.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero la compra";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxPagosCompraMouseClicked
+
+    private void cboxPagosFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxPagosFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxPagosFacturaActionPerformed
+
+    private void cboxPagosFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxPagosFacturaMouseClicked
+        // TODO add your handling code here:
+        String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxPagosFactura.removeAllItems();
+        cargarComboBox.consultaFacturas(cboxPagosFactura);
+        if(cboxPagosFactura.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero la factura";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxPagosFacturaMouseClicked
+
+    private void txtPagosMontoPagadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPagosMontoPagadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPagosMontoPagadoActionPerformed
+
+    private void txtPagosMontoPagadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPagosMontoPagadoMouseClicked
+        // TODO add your handling code here:
+        calculos conversionTC = new calculos();
+       
+        try{
+        float tipoCambio  = Float.parseFloat(txtPagosTC.getText());
+        float montoDLS = Float.parseFloat(txtPagosMontoDLS.getText());
+        float resultado = conversionTC.conversionTC(tipoCambio, montoDLS);
+        
+        String s = Float.toString(resultado);
+        
+        txtPagosMontoPagado.setText(s);
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_txtPagosMontoPagadoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -277,13 +413,9 @@ public class capturaPagos extends javax.swing.JFrame {
     private javax.swing.JButton btnPagosCerrar;
     private javax.swing.JButton btnPagosRegistrar;
     private javax.swing.JComboBox<String> cboxPagosCompra;
-    private javax.swing.JComboBox<String> cboxPagosCuentaBancaria;
-    private javax.swing.JComboBox<String> cboxPagosDivison;
     private javax.swing.JComboBox<String> cboxPagosFactura;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPagosCompra;
-    private javax.swing.JLabel lblPagosCuentaBancaria;
-    private javax.swing.JLabel lblPagosDivision;
     private javax.swing.JLabel lblPagosFactura;
     private javax.swing.JLabel lblPagosFecha;
     private javax.swing.JLabel lblPagosMoneda;
