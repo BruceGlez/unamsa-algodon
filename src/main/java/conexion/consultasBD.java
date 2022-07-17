@@ -451,4 +451,39 @@ public class consultasBD {
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
     }
+    
+    public void consultaFacturasCliente(JComboBox cboxPagosFactura) {
+       PreparedStatement ps;
+        String sql;
+        ResultSet result = null;
+        
+        try{
+            con = conectar.getConexion();
+            sql = "SELECT factura.folioFactura,factura.idfactura, clientes.nombre, clientes.idclientes FROM factura INNER JOIN clientes ON factura.fkClienteRelacionado = clientes.idclientes";
+            
+            ps = con.prepareStatement(sql);
+            result = ps.executeQuery();
+            
+                  
+           while(result.next()){
+                cboxPagosFactura.addItem(result.getString("idfactura")+"- Folio Fac: "+result.getString("folioFactura")+"- Cliente: "+ result.getString("clientes.nombre"));
+                
+            }
+            
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        } finally {
+            if(con!=null){
+                try{
+                    con.close();
+                    result.close();
+                    
+                    con = null;
+                    result = null;
+                }catch (SQLException e){
+                    JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                }
+            }
+        }
+    }
 }

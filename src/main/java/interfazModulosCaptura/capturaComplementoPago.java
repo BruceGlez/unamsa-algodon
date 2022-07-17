@@ -4,6 +4,9 @@
  */
 package interfazModulosCaptura;
 
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -42,6 +45,17 @@ public class capturaComplementoPago extends javax.swing.JFrame {
         lblComplementoFolio.setText("Folio de Complemento:");
 
         lblComplementoFactura.setText("Factura Relacionada:");
+
+        cboxComplementoFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboxComplementoFacturaMouseClicked(evt);
+            }
+        });
+        cboxComplementoFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxComplementoFacturaActionPerformed(evt);
+            }
+        });
 
         btnComplementoCerrar.setText("Cerrar");
         btnComplementoCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +130,29 @@ public class capturaComplementoPago extends javax.swing.JFrame {
     private void btnComplementoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplementoRegistrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnComplementoRegistrarActionPerformed
+
+    private void cboxComplementoFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxComplementoFacturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxComplementoFacturaActionPerformed
+
+    private void cboxComplementoFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboxComplementoFacturaMouseClicked
+        // TODO add your handling code here:
+        
+       String mensaje = "";
+        
+        try{
+        consultasBD cargarComboBox = new consultasBD();
+        cboxComplementoFactura.removeAllItems();
+        cargarComboBox.consultaFacturasCliente(cboxComplementoFactura);
+        if(cboxComplementoFactura.getItemCount() == 0){
+            mensaje = "Es necesario capturar primero la factura";
+            JOptionPane.showMessageDialog(null, mensaje);
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_cboxComplementoFacturaMouseClicked
 
     /**
      * @param args the command line arguments

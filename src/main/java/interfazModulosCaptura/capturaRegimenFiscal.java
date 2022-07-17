@@ -69,7 +69,7 @@ public class capturaRegimenFiscal extends javax.swing.JFrame {
             }
         });
 
-        cboxRegISR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0" }));
+        cboxRegISR.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1.25", "4" }));
         cboxRegISR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboxRegISRMouseClicked(evt);
