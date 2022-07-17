@@ -11,9 +11,20 @@ package clases;
 public class cuentaBancaria {
     
     int id;
-    int idBanco;
+    String idBanco;
     int idCliente;
     String noCuenta;
+    String moneda;
+    String clabeBancaria;
+
+    public cuentaBancaria(String idBanco, int idCliente, String noCuenta, String moneda, String clabeBancaria) {
+        this.idBanco = idBanco;
+        this.idCliente = idCliente;
+        this.noCuenta = noCuenta;
+        this.moneda = moneda;
+        this.clabeBancaria = clabeBancaria;
+    }
+    
 
     public int getId() {
         return id;
@@ -23,11 +34,11 @@ public class cuentaBancaria {
         this.id = id;
     }
 
-    public int getIdBanco() {
+    public String getIdBanco() {
         return idBanco;
     }
 
-    public void setIdBanco(int idBanco) {
+    public void setIdBanco(String idBanco) {
         this.idBanco = idBanco;
     }
 
@@ -46,6 +57,23 @@ public class cuentaBancaria {
     public void setNoCuenta(String noCuenta) {
         this.noCuenta = noCuenta;
     }
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
+    }
+
+    public String getClabeBancaria() {
+        return clabeBancaria;
+    }
+
+    public void setClabeBancaria(String clabeBancaria) {
+        this.clabeBancaria = clabeBancaria;
+    }
     
-    
+       
+   
 }

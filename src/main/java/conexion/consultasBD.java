@@ -308,4 +308,28 @@ public class consultasBD {
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
     }
+
+    public void registrarCuentaBancaria(cuentaBancaria cuenta) {
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO cuentaBancaria(banco, noCuenta, fkClienteCuenta, moneda, clabeBancaria) values(?,?,?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, cuenta.getIdBanco());
+            ps.setString(2, cuenta.getNoCuenta());
+            ps.setInt(3, cuenta.getIdCliente());
+            ps.setString(4, cuenta.getMoneda());
+            ps.setString(5, cuenta.getClabeBancaria());
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
 }

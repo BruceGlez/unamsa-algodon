@@ -34,11 +34,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblFacturasCliente" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFacturasFolio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFacturasTotal" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtFacturasTotal" min="-2" pref="106" max="-2" attributes="0"/>
                           <Component id="cboxFacturasCliente" min="-2" pref="130" max="-2" attributes="0"/>
                           <Component id="txtFacturasFolio" min="-2" pref="106" max="-2" attributes="0"/>
                       </Group>
@@ -47,7 +45,14 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="btnFacturasRegistrar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="btnFacturasCerrar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lblFacturasTotal" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="txtFacturasTotal" min="-2" pref="106" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="btnFacturasCerrar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="83" max="32767" attributes="0"/>
@@ -69,12 +74,12 @@
                   <Component id="lblFacturasCliente" min="-2" max="-2" attributes="0"/>
                   <Component id="cboxFacturasCliente" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblFacturasTotal" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFacturasTotal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnFacturasCerrar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="btnFacturasRegistrar" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
