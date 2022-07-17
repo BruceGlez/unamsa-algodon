@@ -14,6 +14,13 @@ public class regimenFiscal {
     String nombre;
     float retencionISR;
 
+    public regimenFiscal(String nombre, float retencionISR) {
+        this.nombre = nombre;
+        this.retencionISR = retencionISR;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

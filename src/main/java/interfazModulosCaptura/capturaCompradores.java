@@ -4,6 +4,10 @@
  */
 package interfazModulosCaptura;
 
+import clases.compradores;
+import conexion.consultasBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author bruce
@@ -68,16 +72,6 @@ public class capturaCompradores extends javax.swing.JFrame {
                 btnCompradoresCerrarActionPerformed(evt);
             }
         });
-
-        txtCompradoresDireccion.setText("jTextField1");
-
-        txtCompradoresNombre.setText("jTextField1");
-
-        txtCompradoresTelefono.setText("jTextField1");
-
-        txtCompradoresRFC.setText("jTextField1");
-
-        txtCompradoresCP.setText("jTextField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,6 +143,63 @@ public class capturaCompradores extends javax.swing.JFrame {
 
     private void btnCompradoresRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompradoresRegistrarActionPerformed
         // TODO add your handling code here:
+        
+                Boolean guardar = true;
+        String mensaje = "";
+        
+        try{
+            
+        int codigoPostal = Integer.parseInt(txtCompradoresCP.getText());
+        String direccion = txtCompradoresDireccion.getText();
+        String nombre = txtCompradoresNombre.getText();
+        String RFC = txtCompradoresRFC.getText();
+        String telefono = txtCompradoresTelefono.getText();
+      
+        if (nombre.length()==0){
+            guardar = false;
+            mensaje+="Escriba el nombre, por favor\n";
+        }
+        
+        if (telefono.length()==0){
+            guardar = false;
+            mensaje+="Escriba el telefono, por favor\n";
+        }
+        
+        if (direccion.length()==0){
+            guardar = false;
+            mensaje+="Escriba el direccion, por favor\n";
+        }
+         if (RFC.length()==0){
+            guardar = false;
+            mensaje+="Escriba el RFC, por favor\n";
+        }
+          if (codigoPostal < 0 ){
+            guardar = false;
+            mensaje+="Escriba el codigo Postal, por favor\n";
+        }
+        
+        if(guardar){
+           consultasBD consulta = new consultasBD();
+           
+           compradores compradores = new compradores(nombre, direccion, telefono, RFC, codigoPostal);
+           
+           consulta.registrarComprador(compradores);
+           
+           
+           
+           txtCompradoresCP.setText("");
+           txtCompradoresDireccion.setText("");
+           txtCompradoresNombre.setText("");
+           txtCompradoresRFC.setText("");
+           txtCompradoresTelefono.setText("");
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_btnCompradoresRegistrarActionPerformed
 
     private void btnCompradoresCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompradoresCerrarActionPerformed

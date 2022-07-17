@@ -4,6 +4,7 @@
  */
 package interfazModulosCaptura;
 
+import clases.regimenFiscal;
 import conexion.consultasBD;
 import javax.swing.JOptionPane;
 
@@ -159,7 +160,10 @@ public class capturaRegimenFiscal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, nombre + retencion);
         if(guardar){
            consultasBD consulta = new consultasBD();
-           consulta.registrarRegimenFiscal(nombre, retencion);
+           
+           regimenFiscal regFiscal = new regimenFiscal(nombre, retencion);
+           consulta.registrarRegimenFiscal(regFiscal);
+           
            regTxtNombre.setText("");
         }
            else{

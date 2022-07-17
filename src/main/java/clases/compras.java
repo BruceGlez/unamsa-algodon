@@ -12,22 +12,25 @@ public class compras {
     
 
     
-    int id;
-    String fechaPago;
-    String fechaLiquidacion;
-    int compra;
-    int pacas;
-    float total;
-    int cliente;
-    int comprador;
-
-    public int getId() {
-        return id;
+    public String fechaPago;
+    public String fechaLiquidacion;
+    public String compra;
+    public int pacas;
+    public float total;
+    public int cliente;
+    public int comprador;
+    
+    public compras(String compra, String fechaLiquidacion, String fechaPago, int cliente, int pacas, float total, int comprador) {
+        this.fechaPago = fechaPago;
+        this.fechaLiquidacion = fechaLiquidacion;
+        this.compra = compra;
+        this.pacas = pacas;
+        this.total = total;
+        this.cliente = cliente;
+        this.comprador = comprador;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
+    
 
     public String getFechaPago() {
         return fechaPago;
@@ -45,11 +48,11 @@ public class compras {
         this.fechaLiquidacion = fechaLiquidacion;
     }
 
-    public int getCompra() {
+    public String getCompra() {
         return compra;
     }
 
-    public void setCompra(int compra) {
+    public void setCompra(String compra) {
         this.compra = compra;
     }
 
@@ -84,6 +87,8 @@ public class compras {
     public void setComprador(int comprador) {
         this.comprador = comprador;
     }
+
+
     
     
           

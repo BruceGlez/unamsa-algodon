@@ -4,10 +4,7 @@
  */
 package conexion;
 
-import clases.clientes;
-import clases.compras;
-import clases.contadores;
-import clases.regimenFiscal;
+import clases.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,11 +19,12 @@ import javax.swing.JOptionPane;
  */
 public class consultasBD {
     
-    private conexionBD conectar;
-    private clientes cliente;
-    private contadores contador;
-    private regimenFiscal regFiscal;
-    private compras compras;
+    conexionBD conectar;
+    clientes cliente;
+    contadores contador;
+    regimenFiscal regFiscal;
+    compras compras;
+    compradores comprador;
     private Connection con;
     
     public consultasBD(){
@@ -39,6 +37,7 @@ public class consultasBD {
     public void registrarCliente(String nombre, String direccion, int codigoPostal, String RFC, int idRegimenFiscal, String telefono, String correo, int idContador){
         PreparedStatement ps;
         String sql;
+        
         cliente.setNombre(nombre);
         cliente.setDireccion(direccion);
         cliente.setCodigoPostal(codigoPostal);
@@ -166,12 +165,10 @@ public class consultasBD {
         }
     }   
 
-        public void registrarRegimenFiscal(String nombre, Float retencionISR){
+        public void registrarRegimenFiscal(regimenFiscal objRegimen){
         PreparedStatement ps;
         String sql;
-        
-        regFiscal.setNombre(nombre);
-        regFiscal.setRetencionISR(retencionISR);
+       
         
         try{
             con = conectar.getConexion();
@@ -179,8 +176,8 @@ public class consultasBD {
             
             ps = con.prepareStatement(sql);
             
-            ps.setString(1, regFiscal.getNombre());
-            ps.setFloat(2, regFiscal.getRetencionISR());
+            ps.setString(1, objRegimen.getNombre());
+            ps.setFloat(2, objRegimen.getRetencionISR());
             
             ps.execute();
             JOptionPane.showMessageDialog(null, "Se han insertado los datos");
@@ -189,41 +186,7 @@ public class consultasBD {
         }
     }
 
-    public void registrarCompra(int compra, int pacas, String fechaVenc, String fechaLiq, Float total, int cliente, int comprador) {
-        
-        PreparedStatement ps;
-        String sql;
-        
-        compras.setCompra(compra);
-        compras.setCliente(cliente);
-        compras.setPacas(pacas);
-        compras.setFechaLiquidacion(fechaLiq);
-        compras.setFechaPago(fechaVenc);
-        compras.setTotal(total);
-        compras.setComprador(comprador);
-     
-        
-        try{
-            con = conectar.getConexion();
-            sql = "INSERT INTO compras(noCompra, pacas, fechaPago, fechaLiquidacion, total, fkCliente, fkClienteComprador) values(?,?,?,?,?,?)";
-            
-            ps = con.prepareStatement(sql);
-            
-            ps.setInt(1, compras.getCompra());
-            ps.setInt(2, compras.getPacas());
-            ps.setString(3, compras.getFechaPago());
-            ps.setString(4, compras.getFechaLiquidacion());
-            ps.setFloat(5, compras.getTotal());
-            ps.setInt(6, compras.getCliente());
-            ps.setInt(7, compras.getComprador());
-            
-            ps.execute();
-            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
-        }
-    }
-
+ 
     public void consultaClientes(JComboBox cboxCompraCliente) {
         PreparedStatement ps;
         String sql;
@@ -291,6 +254,58 @@ public class consultasBD {
                     JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
                 }
             }
+        }
+    }
+    
+    public void registrarCompra(compras constCompras){
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO compras(noCompra, fechaLiquidacion, fechaPago, fkCliente, pacas, total, fkClienteComprador) values(?,?,?,?,?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, constCompras.getCompra());
+            ps.setString(2, constCompras.getFechaLiquidacion());
+            ps.setString(3, constCompras.getFechaPago());
+            ps.setInt(4, constCompras.getCliente());
+            ps.setInt(5, constCompras.getPacas());
+            ps.setFloat(6, constCompras.getTotal());
+            ps.setInt(7, constCompras.getComprador());
+            
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
+    
+    public void registrarComprador(compradores objComprador){
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO compradores(nombre, direccion, telefono, RFC, codigoPostal) values(?,?,?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, objComprador.getNombre());
+            ps.setString(2, objComprador.getDireccion());
+            ps.setString(3, objComprador.getTelefono());
+            ps.setString(4, objComprador.getTelefono());
+            ps.setInt(5, objComprador.getCodigoPostal());
+            
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
     }
 }

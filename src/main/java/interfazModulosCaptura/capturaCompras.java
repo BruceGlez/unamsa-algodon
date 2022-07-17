@@ -4,6 +4,7 @@
  */
 package interfazModulosCaptura;
 
+import clases.compras;
 import conexion.consultasBD;
 import javax.swing.JOptionPane;
 
@@ -70,7 +71,6 @@ public class capturaCompras extends javax.swing.JFrame {
 
         lblCompraCliente.setText("Cliente:");
 
-        cboxCompraCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxCompraCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboxCompraClienteMouseClicked(evt);
@@ -98,7 +98,6 @@ public class capturaCompras extends javax.swing.JFrame {
 
         lblComprasComprador.setText("Comprador: ");
 
-        cboxComprasComprador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxComprasComprador.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cboxComprasCompradorMouseClicked(evt);
@@ -188,7 +187,7 @@ public class capturaCompras extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxComprasComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblComprasComprador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCompraRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCompraCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,13 +212,14 @@ public class capturaCompras extends javax.swing.JFrame {
         
         try{
             
+        String noCompra = txtCompraNoCompra.getText();  
         String fechaLiq = txtCompraFechaLiq.getText();
         String fechaVenc = txtCompraFechaVenc.getText();
-        int noCompra = Integer.parseInt(txtCompraNoCompra.getText());
         int pacas = Integer.parseInt(txtCompraPacas.getText());
-        Float total = Float.parseFloat(txtCompraTotal.getText());
-        
-        if (fechaLiq.length()==0){
+        float total = Float.parseFloat(txtCompraTotal.getText());
+         //int total = Integer.parseInt(txtCompraTotal.getText());
+         
+       if (fechaLiq.length()==0){
             guardar = false;
             mensaje+="Escriba la fecha de liquidacion, por favor\n";
         }
@@ -227,7 +227,7 @@ public class capturaCompras extends javax.swing.JFrame {
             guardar = false;
             mensaje+="Escriba la fecha de vencimiento, por favor\n";
         }
-        if (noCompra==0){
+        if (noCompra.length()==0){
             guardar = false;
             mensaje+="Escriba el numero de compra, por favor\n";
         }
@@ -235,7 +235,7 @@ public class capturaCompras extends javax.swing.JFrame {
             guardar = false;
             mensaje+="Escriba la cantidad de Pacas, por favor\n";
         }
-        if (total==0){
+        if (total == 0){
         guardar = false;
         mensaje+="Escriba el total de la compra, por favor\n";
         }
@@ -247,10 +247,15 @@ public class capturaCompras extends javax.swing.JFrame {
             String f = (String) cboxComprasComprador.getSelectedItem();
             char g = f.charAt(0);
             int comprador = Character.getNumericValue(g);
-        
+            
+            
         if(guardar){
            consultasBD consulta = new consultasBD();
-           consulta.registrarCompra(noCompra, pacas, fechaVenc, fechaLiq, total, cliente, comprador);
+           JOptionPane.showMessageDialog(null, "compra: " +  noCompra + "\n" + "Fecha de Venc: " + fechaVenc + "\n" + "Fecha de Liq: " + fechaLiq + "\n" + "cliente: " + cliente + "\n" + "pacas: " + pacas + "\n" + "comprador: " + comprador + "\n" + "total: " + total);
+           compras compras = new compras(noCompra, fechaVenc, fechaLiq, cliente, pacas, (int) total, comprador);
+           
+           consulta.registrarCompra(compras);
+           
            txtCompraFechaLiq.setText("");
            txtCompraFechaVenc.setText("");
            txtCompraNoCompra.setText("");
@@ -261,10 +266,11 @@ public class capturaCompras extends javax.swing.JFrame {
            else{
                JOptionPane.showMessageDialog(null, mensaje);
            }
-        }
+     }
         catch(Exception e){
-            JOptionPane.showMessageDialog(null, e);
-        }
+           JOptionPane.showMessageDialog(null, e);
+       }
+
     }//GEN-LAST:event_btnCompraRegistrarActionPerformed
 
     private void txtCompraPacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCompraPacasActionPerformed

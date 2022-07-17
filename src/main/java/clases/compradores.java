@@ -18,6 +18,16 @@ public class compradores {
     int codigoPostal;
     int idCompra;
 
+    public compradores(String nombre, String direccion, String telefono, String RFC, int codigoPostal) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.RFC = RFC;
+        this.codigoPostal = codigoPostal;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
