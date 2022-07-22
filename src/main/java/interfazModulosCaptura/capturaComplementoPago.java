@@ -129,6 +129,8 @@ public class capturaComplementoPago extends javax.swing.JFrame {
 
     private void btnComplementoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplementoRegistrarActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_btnComplementoRegistrarActionPerformed
 
     private void cboxComplementoFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxComplementoFacturaActionPerformed
