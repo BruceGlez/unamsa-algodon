@@ -11,8 +11,13 @@ package clases;
 public class complementoPago {
     
     int id;
-    int idCliente;
+    int idFactura;
     String Folio;
+
+    public complementoPago(String Folio,int idFactura) {
+        this.idFactura = idFactura;
+        this.Folio = Folio;
+    }
 
     public int getId() {
         return id;
@@ -22,12 +27,12 @@ public class complementoPago {
         this.id = id;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getIdFactura() {
+        return idFactura;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setIdFactura(int idFactura) {
+        this.idFactura = idFactura;
     }
 
     public String getFolio() {
@@ -37,6 +42,8 @@ public class complementoPago {
     public void setFolio(String Folio) {
         this.Folio = Folio;
     }
+
+
     
     
 }

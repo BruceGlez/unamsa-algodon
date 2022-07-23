@@ -486,4 +486,28 @@ public class consultasBD {
             }
         }
     }
+
+    public void registrarComplemento(complementoPago compl) {
+        
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO complementopago(folioComplemento, fkFacturaRelacionada) values(?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, compl.getFolio());
+            ps.setInt(2, compl.getIdFactura());
+
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+        
+    }
 }
