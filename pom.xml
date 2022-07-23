@@ -46,7 +46,12 @@
             <artifactId>jasperreports</artifactId>
             <version>6.19.1</version>
         </dependency>
-    </dependencies>
+            <dependency>
+                <groupId>unknown.binary</groupId>
+                <artifactId>jcalendar-1.4</artifactId>
+                <version>SNAPSHOT</version>
+            </dependency>
+        </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -77,5 +82,12 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>  
+    </build>
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+    </repositories>
 </project>

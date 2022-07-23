@@ -188,6 +188,24 @@ public class interfazReportes extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        conexionBD conexion = new conexionBD();
+       try{
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteCompras.jrxml"));
+           JasperDesign jd = JRXmlLoader.load(in);
+           String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
+           JRDesignQuery newQuery = new JRDesignQuery();
+           newQuery.setText(sql);
+           jd.setQuery(newQuery);
+           JasperReport jr = JasperCompileManager.compileReport(jd);
+           HashMap para = new HashMap();
+           JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
+           JasperViewer.viewReport(j, false);
+           //OutputStream os = new FileOutputStream(new File("C:\\Users"));
+           //JasperExportManager.exportReportToPdfFile(j, os);
+           
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
