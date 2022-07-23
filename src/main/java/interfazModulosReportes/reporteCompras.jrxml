@@ -3,8 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="cliente" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes;]]>
+		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes WHERE idclientes = $P{cliente};]]>
 	</queryString>
 	<field name="idcompras" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -12,10 +15,10 @@
 	<field name="noCompra" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fechaLiquidacion" class="java.lang.String">
+	<field name="fechaLiquidacion" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="fechaPago" class="java.lang.String">
+	<field name="fechaPago" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="fkCliente" class="java.lang.Integer">
@@ -57,6 +60,13 @@
 	<field name="fkContador" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<sortField name="idclientes"/>
+	<variable name="total_1" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<variable name="pacas_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{pacas}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -90,7 +100,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="49" splitType="Stretch">
 			<staticText>
 				<reportElement x="59" y="0" width="463" height="35" uuid="fece2297-2c24-4b19-a8fc-1f9d433568ab"/>
 				<textElement textAlignment="Center">
@@ -101,59 +111,64 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="41" width="100" height="20" uuid="085a6c47-db38-4d8f-bb27-9fec0f164b30"/>
+				<reportElement x="0" y="0" width="59" height="20" uuid="085a6c47-db38-4d8f-bb27-9fec0f164b30"/>
 				<text><![CDATA[Compra]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="201" y="41" width="100" height="20" uuid="b53c50b1-e406-4245-89c0-8cc1a58ab3f7"/>
+				<reportElement x="201" y="0" width="100" height="20" uuid="b53c50b1-e406-4245-89c0-8cc1a58ab3f7"/>
 				<text><![CDATA[Fecha Liquidacion	]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="301" y="41" width="100" height="20" uuid="6c5cb1f4-4cf7-4e72-a2b7-ae1703b21b32"/>
+				<reportElement x="301" y="0" width="100" height="20" uuid="6c5cb1f4-4cf7-4e72-a2b7-ae1703b21b32"/>
 				<text><![CDATA[Fecha Pago]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="479" y="41" width="76" height="20" uuid="895aff7c-6ba1-42a3-bdc7-1c0a7a2c73b0"/>
+				<reportElement x="479" y="0" width="76" height="20" uuid="895aff7c-6ba1-42a3-bdc7-1c0a7a2c73b0"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="401" y="41" width="78" height="20" uuid="38dc385d-208a-400c-9522-ace3a9f22a85"/>
+				<reportElement x="401" y="0" width="78" height="20" uuid="38dc385d-208a-400c-9522-ace3a9f22a85"/>
 				<text><![CDATA[Pacas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="41" width="101" height="20" uuid="aeeab13f-c38a-458b-8893-f54f79df7842"/>
+				<reportElement x="59" y="0" width="142" height="20" uuid="aeeab13f-c38a-458b-8893-f54f79df7842"/>
 				<text><![CDATA[Nombre del Cliente]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="31" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="26" uuid="912b6024-2e8f-485f-9a86-92f63110929b"/>
+			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="100" height="26" uuid="e05047c8-ad4c-41d3-ae8f-74edeac8e9e9"/>
+				<reportElement x="1" y="0" width="58" height="26" uuid="e05047c8-ad4c-41d3-ae8f-74edeac8e9e9"/>
 				<textFieldExpression><![CDATA[$F{noCompra}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="201" y="0" width="100" height="26" uuid="828c654f-c6df-41f8-abe8-a964aaee2d81"/>
+				<reportElement x="202" y="0" width="100" height="26" uuid="828c654f-c6df-41f8-abe8-a964aaee2d81"/>
 				<textFieldExpression><![CDATA[$F{fechaLiquidacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="301" y="0" width="100" height="26" uuid="0ff83ac7-619e-483c-9839-ae3f4bfbce4a"/>
+				<reportElement x="302" y="0" width="100" height="26" uuid="0ff83ac7-619e-483c-9839-ae3f4bfbce4a"/>
 				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="478" y="0" width="77" height="26" uuid="e4c3df33-d0fb-4a4a-b84c-e0ef31bb9932"/>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="479" y="0" width="77" height="26" uuid="e4c3df33-d0fb-4a4a-b84c-e0ef31bb9932"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="400" y="0" width="78" height="26" uuid="9fe1cd24-844e-4632-9a92-e05c94416903"/>
-				<textFieldExpression><![CDATA[$F{pacas}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="0" width="100" height="26" uuid="596ed541-4666-4dbd-85e9-ae456a315a35"/>
+				<reportElement x="59" y="0" width="143" height="26" uuid="596ed541-4666-4dbd-85e9-ae456a315a35"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
+			<elementGroup>
+				<textField>
+					<reportElement x="401" y="0" width="78" height="26" uuid="9fe1cd24-844e-4632-9a92-e05c94416903"/>
+					<textFieldExpression><![CDATA[$F{pacas}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
 		</band>
 	</detail>
 	<columnFooter>
@@ -163,6 +178,15 @@
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="42" splitType="Stretch">
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="478" y="22" width="76" height="20" uuid="0ef39527-75cb-42f5-8fec-cac18707ed5c"/>
+				<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="22" width="77" height="20" uuid="946028ef-5fda-42a8-bbe0-607160d2d1b1"/>
+				<textFieldExpression><![CDATA[$V{pacas_1}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>

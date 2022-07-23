@@ -257,8 +257,6 @@ public class capturaCompras extends javax.swing.JFrame {
             char g = f.charAt(0);
             int comprador = Character.getNumericValue(g);
 
-            
-            JOptionPane.showMessageDialog(null," venc " + fechaVenc + "liq " + fechaLiq );
         if(guardar){
             
            consultasBD consulta = new consultasBD();           
