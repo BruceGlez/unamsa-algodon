@@ -179,7 +179,7 @@ public class capturaComplementoPago extends javax.swing.JFrame {
         catch(Exception e){
            JOptionPane.showMessageDialog(null, e);
        } 
-        
+
     }//GEN-LAST:event_btnComplementoRegistrarActionPerformed
 
     private void cboxComplementoFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxComplementoFacturaActionPerformed

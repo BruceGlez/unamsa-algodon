@@ -87,10 +87,6 @@ public class compras {
 
     public void setComprador(int comprador) {
         this.comprador = comprador;
-    }
-
-
-    
-    
-          
+    }          
 }
+
