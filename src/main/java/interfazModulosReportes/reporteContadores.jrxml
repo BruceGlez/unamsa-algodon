@@ -31,7 +31,7 @@
 		<band height="79" splitType="Stretch">
 			<image scaleImage="FillFrame">
 				<reportElement x="54" y="10" width="68" height="62" uuid="279aa9a6-1afc-46ee-abef-1478a0def90e"/>
-				<imageExpression><![CDATA["C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="158" y="10" width="302" height="19" uuid="7ec2e03a-5dc0-41a6-95d5-53fbf338e0e5"/>

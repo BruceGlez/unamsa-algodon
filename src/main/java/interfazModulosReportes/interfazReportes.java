@@ -169,7 +169,7 @@ public class interfazReportes extends javax.swing.JFrame {
         // TODO add your handling code here:
        conexionBD conexion = new conexionBD();
        try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteClientes.jrxml"));
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteClientes.jrxml"));
            JasperDesign jd = JRXmlLoader.load(in);
            String sql = "select * from clientes";
            JRDesignQuery newQuery = new JRDesignQuery();
@@ -233,7 +233,7 @@ public class interfazReportes extends javax.swing.JFrame {
         // TODO add your handling code here:
                conexionBD conexion = new conexionBD();
        try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteContadores.jrxml"));
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteContadores.jrxml"));
            JasperDesign jd = JRXmlLoader.load(in);
            String sql = "select * from contadores";
            JRDesignQuery newQuery = new JRDesignQuery();
