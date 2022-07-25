@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -454,8 +456,8 @@ public class consultasBD {
     
     public void consultaFacturasCliente(JComboBox cboxPagosFactura) {
        PreparedStatement ps;
-        String sql;
-        ResultSet result = null;
+       String sql;
+       ResultSet result = null;
         
         try{
             con = conectar.getConexion();
@@ -486,4 +488,45 @@ public class consultasBD {
             }
         }
     }
+    
+    public ArrayList llenarTabla() {
+
+      conexionBD conex = new conexionBD();
+      ArrayList miLista = new ArrayList();
+      clientes persona;
+      try {
+       Statement estatuto = conex.getConexion().createStatement();
+       ResultSet rs = estatuto.executeQuery("SELECT * FROM clientes ");
+
+       while (rs.next()) {
+           
+        persona = new clientes();
+        
+        persona.setId(Integer.parseInt(rs.getString("idclientes")));
+        persona.setNombre(rs.getString("nombre"));
+        persona.setDireccion(rs.getString("direccion"));
+        persona.setCodigoPostal(Integer.parseInt(rs.getString("codigoPostal")));
+        persona.setRFC(rs.getString("RFC"));
+        persona.setIdRegimenFiscal(Integer.parseInt(rs.getString("fkRegimen")));
+        persona.setTelefono(rs.getString("telefono"));
+        persona.setCorreo(rs.getString("correo"));
+        persona.setIdContador(Integer.parseInt(rs.getString("fkContador")));
+        
+        
+       miLista.add(persona);
+       }
+       
+       rs.close();
+       estatuto.close();
+       con.close();
+
+      } catch (SQLException e) {
+       System.out.println(e.getMessage());
+       JOptionPane.showMessageDialog(null, "Error al consultar", "Error",
+         JOptionPane.ERROR_MESSAGE);
+
+      }
+      return miLista;
+     }
+
 }
