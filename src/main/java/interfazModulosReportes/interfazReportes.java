@@ -48,12 +48,12 @@ public class interfazReportes extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnRegistroClientes = new javax.swing.JButton();
+        btnReportesCompras = new javax.swing.JButton();
+        btnReportesCompradores = new javax.swing.JButton();
+        btnReportesPagos = new javax.swing.JButton();
+        btnReportesDivisiones = new javax.swing.JButton();
+        btnReportesContadores = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,45 +61,45 @@ public class interfazReportes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 24)); // NOI18N
         jLabel1.setText("REPORTES");
 
-        jButton1.setText("CLIENTES");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistroClientes.setText("CLIENTES");
+        btnRegistroClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistroClientesActionPerformed(evt);
             }
         });
 
-        jButton2.setText("COMPRAS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnReportesCompras.setText("COMPRAS");
+        btnReportesCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnReportesComprasActionPerformed(evt);
             }
         });
 
-        jButton3.setText("COMPRADORES");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnReportesCompradores.setText("COMPRADORES");
+        btnReportesCompradores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnReportesCompradoresActionPerformed(evt);
             }
         });
 
-        jButton4.setText("PAGOS");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnReportesPagos.setText("PAGOS");
+        btnReportesPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnReportesPagosActionPerformed(evt);
             }
         });
 
-        jButton6.setText("DIVISIONES");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnReportesDivisiones.setText("DIVISIONES");
+        btnReportesDivisiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnReportesDivisionesActionPerformed(evt);
             }
         });
 
-        jButton7.setText("CONTADORES");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnReportesContadores.setText("CONTADORES");
+        btnReportesContadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnReportesContadoresActionPerformed(evt);
             }
         });
 
@@ -119,16 +119,16 @@ public class interfazReportes extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnReportesCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegistroClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnReportesCompradores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReportesPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportesDivisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportesContadores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(127, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -147,16 +147,16 @@ public class interfazReportes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistroClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportesPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReportesCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportesContadores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReportesCompradores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReportesDivisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -165,7 +165,7 @@ public class interfazReportes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegistroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClientesActionPerformed
         // TODO add your handling code here:
        conexionBD conexion = new conexionBD();
        try{
@@ -185,29 +185,51 @@ public class interfazReportes extends javax.swing.JFrame {
        }catch(Exception e){
            JOptionPane.showMessageDialog(null, e);
        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegistroClientesActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnReportesComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesComprasActionPerformed
         // TODO add your handling code here:
-        interfazModulosReportes.seleccionCliente verformulario = new seleccionCliente();
+       conexionBD conexion = new conexionBD();
+              
+       try{
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteCompras.jrxml"));
+           JasperDesign jd = JRXmlLoader.load(in);
+           //String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
+           String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
+           JRDesignQuery newQuery = new JRDesignQuery();
+           newQuery.setText(sql);
+           jd.setQuery(newQuery);
+           JasperReport jr = JasperCompileManager.compileReport(jd);
+           HashMap para = new HashMap();
+           JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
+           JasperViewer.viewReport(j, false);
+           //OutputStream os = new FileOutputStream(new File("C:\\Users"));
+           //JasperExportManager.exportReportToPdfFile(j, os);
+           
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
+
+    }//GEN-LAST:event_btnReportesComprasActionPerformed
+
+    private void btnReportesCompradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesCompradoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesCompradoresActionPerformed
+
+    private void btnReportesPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesPagosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportesPagosActionPerformed
+
+    private void btnReportesDivisionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesDivisionesActionPerformed
+        // TODO add your handling code here:
+        seleccionCompra verFormulario = new seleccionCompra();
         
-        verformulario.setVisible(true);
+        verFormulario.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnReportesDivisionesActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnReportesContadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesContadoresActionPerformed
         // TODO add your handling code here:
                conexionBD conexion = new conexionBD();
        try{
@@ -227,7 +249,7 @@ public class interfazReportes extends javax.swing.JFrame {
        }catch(Exception e){
            JOptionPane.showMessageDialog(null, e);
        }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnReportesContadoresActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -273,13 +295,13 @@ public class interfazReportes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnRegistroClientes;
+    private javax.swing.JButton btnReportesCompradores;
+    private javax.swing.JButton btnReportesCompras;
+    private javax.swing.JButton btnReportesContadores;
+    private javax.swing.JButton btnReportesDivisiones;
+    private javax.swing.JButton btnReportesPagos;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
