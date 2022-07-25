@@ -7,6 +7,7 @@ package interfazModulosCaptura;
 import clases.compras;
 import conexion.consultasBD;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -37,9 +38,7 @@ public class capturaCompras extends javax.swing.JFrame {
         lblCompraPacas = new javax.swing.JLabel();
         lblCompraTotal = new javax.swing.JLabel();
         txtCompraNoCompra = new javax.swing.JTextField();
-        txtCompraFechaLiq = new javax.swing.JTextField();
         txtCompraPacas = new javax.swing.JTextField();
-        txtCompraFechaVenc = new javax.swing.JTextField();
         txtCompraTotal = new javax.swing.JTextField();
         lblCompraCliente = new javax.swing.JLabel();
         cboxCompraCliente = new javax.swing.JComboBox<>();
@@ -47,6 +46,8 @@ public class capturaCompras extends javax.swing.JFrame {
         btnCompraCerrar = new javax.swing.JButton();
         lblComprasComprador = new javax.swing.JLabel();
         cboxComprasComprador = new javax.swing.JComboBox<>();
+        jCalendarLiquidacion = new com.toedter.calendar.JDateChooser();
+        jCalendarVencimiento = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,12 +63,6 @@ public class capturaCompras extends javax.swing.JFrame {
         lblCompraPacas.setText("Pacas:");
 
         lblCompraTotal.setText("Total:");
-
-        txtCompraFechaLiq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCompraFechaLiqActionPerformed(evt);
-            }
-        });
 
         txtCompraPacas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +105,10 @@ public class capturaCompras extends javax.swing.JFrame {
             }
         });
 
+        jCalendarLiquidacion.setDateFormatString("yyyy-MM-dd");
+
+        jCalendarVencimiento.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,39 +148,42 @@ public class capturaCompras extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboxCompraCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCompraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboxComprasComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblCompraFechaVenc)
                             .addComponent(lblCompraFechaLiq))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCompraFechaLiq, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                            .addComponent(txtCompraFechaVenc)))
-                    .addComponent(cboxComprasComprador, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(56, Short.MAX_VALUE))
+                            .addComponent(jCalendarLiquidacion, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
+                            .addComponent(jCalendarVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(txtCompraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblCompraTitulo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCompraNoCompra)
-                        .addComponent(txtCompraNoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtCompraFechaLiq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCompraFechaLiq, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCompraPacas)
-                        .addComponent(txtCompraPacas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblCompraFechaVenc)
-                        .addComponent(txtCompraFechaVenc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCompraNoCompra)
+                            .addComponent(txtCompraNoCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblCompraFechaLiq, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jCalendarLiquidacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCompraPacas)
+                            .addComponent(txtCompraPacas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lblCompraFechaVenc)
+                            .addGap(6, 6, 6)))
+                    .addComponent(jCalendarVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCompraTotal)
                     .addComponent(txtCompraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -193,7 +195,7 @@ public class capturaCompras extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboxComprasComprador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblComprasComprador))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCompraRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCompraCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,7 +215,66 @@ public class capturaCompras extends javax.swing.JFrame {
 
     private void btnCompraRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraRegistrarActionPerformed
         // TODO add your handling code here:
-        
+                Boolean guardar = true;
+        String mensaje = "";
+
+        try{
+
+        //String fechaLiq = jCalendarLiquidacion.toString();
+        String fechaLiq = ((JTextField)jCalendarLiquidacion.getDateEditor().getUiComponent()).getText();
+        //String fechaVenc = jCalendarVencimiento.toString();
+        String fechaVenc = ((JTextField)jCalendarVencimiento.getDateEditor().getUiComponent()).getText();
+        String noCompra = txtCompraNoCompra.getText();
+        int pacas = Integer.parseInt(txtCompraPacas.getText());
+        Float total = Float.parseFloat(txtCompraTotal.getText());
+
+        if (fechaLiq.length()==0){
+            guardar = false;
+            mensaje+="Escriba la fecha de liquidacion, por favor\n";
+        }
+        if (fechaVenc.length()==0){
+            guardar = false;
+            mensaje+="Escriba la fecha de vencimiento, por favor\n";
+        }
+        if (noCompra.length()==0){
+            guardar = false;
+            mensaje+="Escriba el numero de compra, por favor\n";
+        }
+        if (pacas==0){
+            guardar = false;
+            mensaje+="Escriba la cantidad de Pacas, por favor\n";
+        }
+        if (total==0){
+        guardar = false;
+        mensaje+="Escriba el total de la compra, por favor\n";
+        }
+
+            String c = (String) cboxCompraCliente.getSelectedItem();
+            char d = c.charAt(0);
+            int cliente = Character.getNumericValue(d);
+
+            String f = (String) cboxComprasComprador.getSelectedItem();
+            char g = f.charAt(0);
+            int comprador = Character.getNumericValue(g);
+
+        if(guardar){
+            
+           consultasBD consulta = new consultasBD();           
+           compras compra = new compras(noCompra, fechaLiq, fechaVenc, cliente, pacas, total, comprador);           
+           consulta.registrarCompra(compra);
+
+           txtCompraNoCompra.setText("");
+           txtCompraPacas.setText("");
+           txtCompraTotal.setText("");
+
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
 
     }//GEN-LAST:event_btnCompraRegistrarActionPerformed
 
@@ -261,10 +322,6 @@ public class capturaCompras extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cboxComprasCompradorMouseClicked
 
-    private void txtCompraFechaLiqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCompraFechaLiqActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCompraFechaLiqActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -306,6 +363,8 @@ public class capturaCompras extends javax.swing.JFrame {
     private javax.swing.JButton btnCompraRegistrar;
     private javax.swing.JComboBox<String> cboxCompraCliente;
     private javax.swing.JComboBox<String> cboxComprasComprador;
+    private com.toedter.calendar.JDateChooser jCalendarLiquidacion;
+    private com.toedter.calendar.JDateChooser jCalendarVencimiento;
     private javax.swing.JLabel lblCompraCliente;
     private javax.swing.JLabel lblCompraFechaLiq;
     private javax.swing.JLabel lblCompraFechaVenc;
@@ -314,8 +373,6 @@ public class capturaCompras extends javax.swing.JFrame {
     private javax.swing.JLabel lblCompraTitulo;
     private javax.swing.JLabel lblCompraTotal;
     private javax.swing.JLabel lblComprasComprador;
-    private javax.swing.JTextField txtCompraFechaLiq;
-    private javax.swing.JTextField txtCompraFechaVenc;
     private javax.swing.JTextField txtCompraNoCompra;
     private javax.swing.JTextField txtCompraPacas;
     private javax.swing.JTextField txtCompraTotal;

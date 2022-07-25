@@ -9,6 +9,7 @@ import clases.compras;
 import clases.pagos;
 import conexion.consultasBD;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -41,7 +42,6 @@ public class capturaPagos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listPagosMoneda = new javax.swing.JList<>();
         txtPagosMontoPagado = new javax.swing.JTextField();
-        txtPagosFecha = new javax.swing.JTextField();
         lblPagosFecha = new javax.swing.JLabel();
         cboxPagosFactura = new javax.swing.JComboBox<>();
         txtPagosTC = new javax.swing.JTextField();
@@ -50,6 +50,7 @@ public class capturaPagos extends javax.swing.JFrame {
         btnPagosRegistrar = new javax.swing.JButton();
         btnPagosCerrar = new javax.swing.JButton();
         cboxPagosCompra = new javax.swing.JComboBox<>();
+        jPagosFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,6 +132,8 @@ public class capturaPagos extends javax.swing.JFrame {
             }
         });
 
+        jPagosFecha.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,38 +168,39 @@ public class capturaPagos extends javax.swing.JFrame {
                                     .addComponent(cboxPagosCompra, 0, 127, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1))))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addComponent(lblPagosFactura)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cboxPagosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(lblPagosFactura)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cboxPagosFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtPagosFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(67, 67, 67))
-                            .addGroup(layout.createSequentialGroup()
+                                .addGap(113, 113, 113)
                                 .addComponent(lblPagosTC)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPagosTC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtPagosTC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(lblPagosMontoDLS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPagosMontoDLS)))
+                        .addContainerGap(48, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lblPagosMontoDLS)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPagosMontoDLS)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addGap(81, 81, 81)
+                        .addComponent(jPagosFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lblPagosTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblPagosFecha)
-                    .addComponent(txtPagosFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(jPagosFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
@@ -214,14 +218,14 @@ public class capturaPagos extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPagosMoneda)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(39, 39, 39)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPagosMontoPagado)
                     .addComponent(txtPagosMontoPagado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPagosMontoDLS)
                     .addComponent(txtPagosMontoDLS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPagosRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPagosCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -242,7 +246,7 @@ public class capturaPagos extends javax.swing.JFrame {
         
         try{
             
-        String fechaPago = txtPagosFecha.getText();  
+        String fechaPago = ((JTextField)jPagosFecha.getDateEditor().getUiComponent()).getText();  
         float montoDLS = Float.parseFloat(txtPagosMontoDLS.getText());
         float montoPagado = Float.parseFloat(txtPagosMontoPagado.getText());
         float tipoCambio  = Float.parseFloat(txtPagosTC.getText());
@@ -286,7 +290,6 @@ public class capturaPagos extends javax.swing.JFrame {
                       
            consulta.registrarPago(pago);
            
-           txtPagosFecha.setText("");
            txtPagosMontoDLS.setText("");
            txtPagosMontoPagado.setText("");
            txtPagosTC.setText("");
@@ -415,6 +418,7 @@ public class capturaPagos extends javax.swing.JFrame {
     private javax.swing.JButton btnPagosRegistrar;
     private javax.swing.JComboBox<String> cboxPagosCompra;
     private javax.swing.JComboBox<String> cboxPagosFactura;
+    private com.toedter.calendar.JDateChooser jPagosFecha;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPagosCompra;
     private javax.swing.JLabel lblPagosFactura;
@@ -425,7 +429,6 @@ public class capturaPagos extends javax.swing.JFrame {
     private javax.swing.JLabel lblPagosTC;
     private javax.swing.JLabel lblPagosTitulo;
     private javax.swing.JList<String> listPagosMoneda;
-    private javax.swing.JTextField txtPagosFecha;
     private javax.swing.JTextField txtPagosMontoDLS;
     private javax.swing.JTextField txtPagosMontoPagado;
     private javax.swing.JTextField txtPagosTC;

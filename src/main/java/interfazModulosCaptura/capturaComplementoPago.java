@@ -4,6 +4,8 @@
  */
 package interfazModulosCaptura;
 
+import clases.complementoPago;
+import clases.facturas;
 import conexion.consultasBD;
 import javax.swing.JOptionPane;
 
@@ -130,7 +132,54 @@ public class capturaComplementoPago extends javax.swing.JFrame {
     private void btnComplementoRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComplementoRegistrarActionPerformed
         // TODO add your handling code here:
         
+        Boolean guardar = true;
+        String mensaje = "";
+        String t = "";
         
+        try{
+            
+        String folioComplemento = txtComplementoFolio.getText();  
+        
+        int facturaRelacionada = 0;
+        
+       if (folioComplemento.length()==0){
+            guardar = false;
+            mensaje+="Escriba el folio del complemento de pago, por favor\n";
+        }
+
+            String c = (String) cboxComplementoFactura.getSelectedItem();
+            char d = c.charAt(0);
+            char e = c.charAt(1);
+            
+            if(Character.isDigit(e)){
+                
+                t = new StringBuilder().append(d).append(e).toString();
+                facturaRelacionada = Integer.parseInt(t);
+            }
+            else{
+                t = new StringBuilder().append(d).toString();
+                facturaRelacionada = Integer.parseInt(t);
+            }
+
+            
+        if(guardar){
+            
+           consultasBD consulta = new consultasBD();
+           
+           complementoPago compl = new complementoPago(folioComplemento, facturaRelacionada);
+           consulta.registrarComplemento(compl);
+           
+           txtComplementoFolio.setText("");
+
+        }
+           else{
+               JOptionPane.showMessageDialog(null, mensaje);
+           }
+     }
+        catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       } 
+
     }//GEN-LAST:event_btnComplementoRegistrarActionPerformed
 
     private void cboxComplementoFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxComplementoFacturaActionPerformed

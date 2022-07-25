@@ -20,6 +20,7 @@ public class compras {
     public int cliente;
     public int comprador;
     
+    
     public compras(String compra, String fechaLiquidacion, String fechaPago, int cliente, int pacas, float total, int comprador) {
         this.fechaPago = fechaPago;
         this.fechaLiquidacion = fechaLiquidacion;
@@ -86,10 +87,6 @@ public class compras {
 
     public void setComprador(int comprador) {
         this.comprador = comprador;
-    }
-
-
-    
-    
-          
+    }          
 }
+

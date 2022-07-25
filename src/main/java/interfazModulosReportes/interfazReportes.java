@@ -5,6 +5,7 @@
 package interfazModulosReportes;
 
 import conexion.conexionBD;
+import interfazModulosCaptura.interfazCaptura;
 import interfazModulosPrincipal.interfazPrincipal;
 import java.io.File;
 import java.io.FileInputStream;
@@ -188,6 +189,10 @@ public class interfazReportes extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        interfazModulosReportes.seleccionCliente verformulario = new seleccionCliente();
+        
+        verformulario.setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
