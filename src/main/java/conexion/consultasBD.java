@@ -510,4 +510,30 @@ public class consultasBD {
         }
         
     }
+
+    public void registrarDivision(divisiones division) {
+        
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO divisiones(noDivision, divisionPacas, divisionTotal, fkCompra, fkClienteDivision) values(?,?,?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, division.getNoDivision());
+            ps.setInt(2, division.getPacas());
+            ps.setFloat(3, division.getTotal());
+            ps.setInt(4, division.getIdCompra());
+            ps.setInt(5, division.getIdCliente());
+
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
 }

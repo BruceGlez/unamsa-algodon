@@ -232,7 +232,10 @@ public class interfazCaptura extends javax.swing.JFrame {
 
     private void btnInterfazCapturaDivisionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInterfazCapturaDivisionesActionPerformed
         // TODO add your handling code here:
-    
+        capturaDivision verformulario = new capturaDivision();
+        
+        verformulario.setVisible(true);
+        dispose();  
         
     }//GEN-LAST:event_btnInterfazCapturaDivisionesActionPerformed
 

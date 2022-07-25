@@ -11,8 +11,21 @@ package clases;
 public class divisiones {
     
     int id;
-    int noDivision;
+    String noDivision;
+    int pacas;
+    float total;
     int idCompra;
+    int idCliente;
+
+    public divisiones(String noDivision, int pacas, float total, int idCompra, int idCliente) {
+        this.noDivision = noDivision;
+        this.pacas = pacas;
+        this.total = total;
+        this.idCompra = idCompra;
+        this.idCliente = idCliente;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -22,12 +35,28 @@ public class divisiones {
         this.id = id;
     }
 
-    public int getNoDivision() {
+    public String getNoDivision() {
         return noDivision;
     }
 
-    public void setNoDivision(int noDivision) {
+    public void setNoDivision(String noDivision) {
         this.noDivision = noDivision;
+    }
+
+    public int getPacas() {
+        return pacas;
+    }
+
+    public void setPacas(int pacas) {
+        this.pacas = pacas;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 
     public int getIdCompra() {
@@ -37,6 +66,15 @@ public class divisiones {
     public void setIdCompra(int idCompra) {
         this.idCompra = idCompra;
     }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
     
     
+
 }

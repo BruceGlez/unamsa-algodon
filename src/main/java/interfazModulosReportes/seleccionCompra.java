@@ -24,12 +24,12 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author bruce
  */
-public class seleccionCliente extends javax.swing.JFrame {
+public class seleccionCompra extends javax.swing.JFrame {
 
     /**
      * Creates new form seleccionCliente
      */
-    public seleccionCliente() {
+    public seleccionCompra() {
         initComponents();
     }
 
@@ -42,18 +42,18 @@ public class seleccionCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblRegNombre = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        lblSeleccionCompra = new javax.swing.JLabel();
+        txtSeleccionCompra = new javax.swing.JTextField();
+        btnSeleccionCompra = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblRegNombre.setText("Ingrese el No de Cliente");
+        lblSeleccionCompra.setText("Ingrese el No de Compra:");
 
-        jButton1.setText("Generar Reporte");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSeleccionCompra.setText("Generar Reporte");
+        btnSeleccionCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSeleccionCompraActionPerformed(evt);
             }
         });
 
@@ -64,38 +64,38 @@ public class seleccionCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
+                    .addComponent(btnSeleccionCompra)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblRegNombre)
+                        .addComponent(lblSeleccionCompra)
                         .addGap(37, 37, 37)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(102, Short.MAX_VALUE))
+                        .addComponent(txtSeleccionCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRegNombre)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSeleccionCompra)
+                    .addComponent(txtSeleccionCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
-                .addComponent(jButton1)
+                .addComponent(btnSeleccionCompra)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSeleccionCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionCompraActionPerformed
         // TODO add your handling code here:
        conexionBD conexion = new conexionBD();
-       String clave = jTextField1.getText();
+       String clave = txtSeleccionCompra.getText();
        
        try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteCompras.jrxml"));
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteDivisiones.jrxml"));
            JasperDesign jd = JRXmlLoader.load(in);
            //String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
-           String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes WHERE idclientes = " + clave;
+           String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones ON compras.idcompras = divisiones.fkCompra WHERE noCompra = " + clave;
            JRDesignQuery newQuery = new JRDesignQuery();
            newQuery.setText(sql);
            jd.setQuery(newQuery);
@@ -109,7 +109,7 @@ public class seleccionCliente extends javax.swing.JFrame {
        }catch(Exception e){
            JOptionPane.showMessageDialog(null, e);
        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSeleccionCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,27 +128,28 @@ public class seleccionCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(seleccionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(seleccionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(seleccionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(seleccionCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new seleccionCliente().setVisible(true);
+                new seleccionCompra().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lblRegNombre;
+    private javax.swing.JButton btnSeleccionCompra;
+    private javax.swing.JLabel lblSeleccionCompra;
+    private javax.swing.JTextField txtSeleccionCompra;
     // End of variables declaration//GEN-END:variables
 }

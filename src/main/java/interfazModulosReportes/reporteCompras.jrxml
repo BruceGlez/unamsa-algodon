@@ -73,25 +73,25 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="114" y="10" width="302" height="19" uuid="c89a1055-6c3b-4083-af77-5ab1eadee87a"/>
+				<reportElement x="104" y="0" width="302" height="19" uuid="c89a1055-6c3b-4083-af77-5ab1eadee87a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[UNION ALGODONERA MOCTEZUMA SA DE CV 				]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="161" y="29" width="216" height="19" uuid="50d0e299-e80a-4490-9d02-32933222bd2d"/>
+				<reportElement x="151" y="19" width="216" height="19" uuid="50d0e299-e80a-4490-9d02-32933222bd2d"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="12"/>
 				</textElement>
 				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
 			</staticText>
 			<image scaleImage="FillFrame">
-				<reportElement x="10" y="10" width="68" height="62" uuid="4b45302a-4139-44cb-a5b5-f4807e165770"/>
+				<reportElement x="0" y="0" width="68" height="62" uuid="4b45302a-4139-44cb-a5b5-f4807e165770"/>
 				<imageExpression><![CDATA["C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="161" y="48" width="216" height="19" uuid="0130a792-242e-442e-af5b-6abfc6ef850c"/>
+				<reportElement x="151" y="38" width="216" height="19" uuid="0130a792-242e-442e-af5b-6abfc6ef850c"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="12"/>
 				</textElement>
@@ -100,9 +100,9 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="49" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<staticText>
-				<reportElement x="59" y="0" width="463" height="35" uuid="fece2297-2c24-4b19-a8fc-1f9d433568ab"/>
+				<reportElement x="49" y="0" width="463" height="35" uuid="fece2297-2c24-4b19-a8fc-1f9d433568ab"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="24"/>
 				</textElement>

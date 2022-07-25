@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="17fb8fb5-c178-45ae-ab14-c4806034db87">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones on compras.idCompras = divisiones.fkCompra WHERE noCompra = 2;]]>
+	</queryString>
+	<field name="idcompras" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="noCompra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaLiquidacion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaPago" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pacas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkClienteComprador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idclientes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoPostal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RFC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkRegimen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkContador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="iddivisiones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="noDivision" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisionPacas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisionTotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkCompra" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkClienteDivision" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="202" y="29" width="216" height="19" uuid="5959cb50-d27f-4d4f-8fe6-2bb77ae7d79a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="69" y="10" width="68" height="62" uuid="87bf4ac7-1853-4a71-8cb6-bac1c01a3593"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="155" y="10" width="302" height="19" uuid="86a7f69e-ac14-499a-918e-487f1bcfd928"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[UNION ALGODONERA MOCTEZUMA SA DE CV 				]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="202" y="48" width="216" height="19" uuid="115b2479-47ef-4ad3-9dc6-618268e7c2b0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="137" y="0" width="320" height="39" uuid="cd8c86b6-a84e-4c77-9135-4009d1c6e040"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE DIVISIONES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="111" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="21" width="100" height="20" uuid="da0c6eab-5fe9-4924-973f-795ec09f9446"/>
+				<text><![CDATA[NO. COMPRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="21" width="178" height="20" uuid="c6d602b9-8434-41ec-b773-46d18ecc3747"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="282" y="21" width="100" height="20" uuid="b2af6b6c-5fe3-44c4-ac1d-db14a36a4770"/>
+				<text><![CDATA[PACAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="21" width="100" height="20" uuid="9c32e6b3-2519-4961-83b9-2b2ff88897b2"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="41" width="100" height="20" uuid="d0f0abae-f8f0-4d67-80c1-3db1736b7bf2"/>
+				<textFieldExpression><![CDATA[$F{noCompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="41" width="178" height="20" uuid="70f7df71-137c-48a7-8ece-1270befdc270"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="282" y="41" width="100" height="20" uuid="1da88322-985b-4dcd-bc88-6515991d3484"/>
+				<textFieldExpression><![CDATA[$F{pacas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="382" y="41" width="100" height="20" uuid="23556ad2-a4e9-47f0-9cde-21585e137c0c"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="127" y="71" width="320" height="33" uuid="611b1608-2e74-412f-b0b0-e7ef94e9e751"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Divisiones de la compra]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="63">
+			<textField>
+				<reportElement x="0" y="20" width="100" height="20" uuid="39c3a6cf-a9b1-4c7c-985b-0a86c33c432c"/>
+				<textFieldExpression><![CDATA[$F{noDivision}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a308107f-f8ae-44b3-85bd-8fc0ac267f0c"/>
+				<text><![CDATA[NO. DIVISION]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="282" y="20" width="100" height="20" uuid="66258708-c010-434b-af58-e053c7ee47bf"/>
+				<textFieldExpression><![CDATA[$F{divisionPacas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="282" y="0" width="100" height="20" uuid="254c0720-f262-4715-9891-c636fa92fdf6"/>
+				<text><![CDATA[PACAS]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="382" y="20" width="100" height="20" uuid="7519ca16-c7d4-4fe4-851c-008498c83b53"/>
+				<textFieldExpression><![CDATA[$F{divisionTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="382" y="0" width="100" height="20" uuid="07a686fb-02b2-4543-967a-ce5e43cbdda2"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="0" width="178" height="20" uuid="271a0d7f-40b4-4577-9572-a70bd4e6fceb"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<elementGroup/>
+			<textField>
+				<reportElement x="102" y="20" width="178" height="20" uuid="6d125d38-a61e-496e-9c19-f875fd085f80"/>
+				<textFieldExpression><![CDATA[$F{fkClienteDivision}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
