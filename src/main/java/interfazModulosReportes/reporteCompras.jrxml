@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes WHERE idclientes = $P{cliente};]]>
+		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes;]]>
 	</queryString>
 	<field name="idcompras" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -67,6 +67,9 @@
 	<variable name="pacas_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
 		<variableExpression><![CDATA[$F{pacas}]]></variableExpression>
 	</variable>
+	<variable name="total_2" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -86,10 +89,6 @@
 				</textElement>
 				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
 			</staticText>
-			<image scaleImage="FillFrame">
-				<reportElement x="0" y="0" width="68" height="62" uuid="4b45302a-4139-44cb-a5b5-f4807e165770"/>
-				<imageExpression><![CDATA["C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="151" y="38" width="216" height="19" uuid="0130a792-242e-442e-af5b-6abfc6ef850c"/>
 				<textElement textAlignment="Center">
@@ -97,6 +96,10 @@
 				</textElement>
 				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
 			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="36" y="0" width="68" height="62" uuid="72f62e8e-f308-45ff-9306-1c8e009bfb3d"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -155,10 +158,6 @@
 				<reportElement x="302" y="0" width="100" height="26" uuid="0ff83ac7-619e-483c-9839-ae3f4bfbce4a"/>
 				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
 			</textField>
-			<textField pattern="¤ #,##0.00">
-				<reportElement x="479" y="0" width="77" height="26" uuid="e4c3df33-d0fb-4a4a-b84c-e0ef31bb9932"/>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="59" y="0" width="143" height="26" uuid="596ed541-4666-4dbd-85e9-ae456a315a35"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
@@ -169,6 +168,10 @@
 					<textFieldExpression><![CDATA[$F{pacas}]]></textFieldExpression>
 				</textField>
 			</elementGroup>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="479" y="0" width="76" height="26" uuid="5353b3aa-cd63-48ac-a6d9-c3bb7bb8badd"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -179,13 +182,13 @@
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch">
-			<textField pattern="¤ #,##0.00">
-				<reportElement x="478" y="22" width="76" height="20" uuid="0ef39527-75cb-42f5-8fec-cac18707ed5c"/>
-				<textFieldExpression><![CDATA[$V{total_1}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="401" y="22" width="77" height="20" uuid="946028ef-5fda-42a8-bbe0-607160d2d1b1"/>
 				<textFieldExpression><![CDATA[$V{pacas_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="478" y="22" width="77" height="20" uuid="4b6a99b9-b2d3-4c9e-9737-e4e698ea1f16"/>
+				<textFieldExpression><![CDATA[$V{total_2}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

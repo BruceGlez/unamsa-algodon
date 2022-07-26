@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones on compras.idCompras = divisiones.fkCompra WHERE noCompra = 2;]]>
+		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones ON divisiones.fkClienteDivision = clientes.idclientes WHERE compras.noCompra = 1;]]>
 	</queryString>
 	<field name="idcompras" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -87,10 +87,6 @@
 				</textElement>
 				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
 			</staticText>
-			<image scaleImage="FillFrame">
-				<reportElement x="69" y="10" width="68" height="62" uuid="87bf4ac7-1853-4a71-8cb6-bac1c01a3593"/>
-				<imageExpression><![CDATA["C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-algodon\\unamsa-algodon\\src\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="155" y="10" width="302" height="19" uuid="86a7f69e-ac14-499a-918e-487f1bcfd928"/>
 				<textElement textAlignment="Center">
@@ -105,6 +101,10 @@
 				</textElement>
 				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
 			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="69" y="5" width="68" height="62" uuid="2e86fe69-77fc-401e-ac1c-6bb44e76703b"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -159,6 +159,10 @@
 				</textElement>
 				<text><![CDATA[Divisiones de la compra]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="158" y="2" width="100" height="20" uuid="5807b7b3-9c6f-46f0-8bca-44a600d54a90"/>
+				<text><![CDATA[fkClienteDivision]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -193,7 +197,7 @@
 			</staticText>
 			<elementGroup/>
 			<textField>
-				<reportElement x="102" y="20" width="178" height="20" uuid="6d125d38-a61e-496e-9c19-f875fd085f80"/>
+				<reportElement x="102" y="20" width="178" height="20" uuid="fe7ee9af-e709-4893-b62c-813826e3ef5e"/>
 				<textFieldExpression><![CDATA[$F{fkClienteDivision}]]></textFieldExpression>
 			</textField>
 		</band>

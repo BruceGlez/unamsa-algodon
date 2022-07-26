@@ -6,6 +6,7 @@
 package interfazModulosReportes;
 
 import conexion.conexionBD;
+import interfazModulosPrincipal.interfazPrincipal;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -45,8 +46,9 @@ public class seleccionCompra extends javax.swing.JFrame {
         lblSeleccionCompra = new javax.swing.JLabel();
         txtSeleccionCompra = new javax.swing.JTextField();
         btnSeleccionCompra = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         lblSeleccionCompra.setText("Ingrese el No de Compra:");
 
@@ -54,6 +56,13 @@ public class seleccionCompra extends javax.swing.JFrame {
         btnSeleccionCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSeleccionCompraActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("INICIO");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -70,6 +79,10 @@ public class seleccionCompra extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(txtSeleccionCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +93,9 @@ public class seleccionCompra extends javax.swing.JFrame {
                     .addComponent(txtSeleccionCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(btnSeleccionCompra)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -92,7 +107,7 @@ public class seleccionCompra extends javax.swing.JFrame {
        String clave = txtSeleccionCompra.getText();
        
        try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteDivisiones.jrxml"));
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteDivisiones.jrxml"));
            JasperDesign jd = JRXmlLoader.load(in);
            //String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
            String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones ON compras.idcompras = divisiones.fkCompra WHERE noCompra = " + clave;
@@ -110,6 +125,14 @@ public class seleccionCompra extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, e);
        }
     }//GEN-LAST:event_btnSeleccionCompraActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        interfazModulosPrincipal.interfazPrincipal verformulario = new interfazPrincipal();
+
+        verformulario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +172,7 @@ public class seleccionCompra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSeleccionCompra;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel lblSeleccionCompra;
     private javax.swing.JTextField txtSeleccionCompra;
     // End of variables declaration//GEN-END:variables

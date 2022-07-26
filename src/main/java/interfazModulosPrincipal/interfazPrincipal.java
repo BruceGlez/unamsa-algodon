@@ -11,9 +11,11 @@ import interfazModulosDivison.interfazDivision;
 import interfazModulosReportes.interfazReportes;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -94,7 +96,7 @@ public class interfazPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "idCompras", "noCompra", "fechaPago", "pacas", "total"
+                "Clave","Nombre Cliente", "No. Compra", "Vencimiento", "Pacas", "Total"
             }
         ));
         jScrollPane2.setViewportView(jTableDatosDB);
@@ -105,15 +107,15 @@ public class interfazPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnPrincipalDivisiones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPrincipalCapturas, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPrincipalCapturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPrincipalDivisiones, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(btnPrincipalReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(449, Short.MAX_VALUE)
                 .addComponent(btnActualizarTabla)
                 .addGap(353, 353, 353))
         );
@@ -176,22 +178,29 @@ public class interfazPrincipal extends javax.swing.JFrame {
             
             Statement st = conexion.getConexion().createStatement();
 
-            String sql = "SELECT * FROM compras";
+            String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
             ResultSet rs = st.executeQuery(sql);
 
             while(rs.next()){
+                
+               
 
                 String idCompra = String.valueOf(rs.getInt("idcompras"));
+                String nombreCliente = String.valueOf(rs.getString("nombre"));
                 String noCompra = String.valueOf(rs.getString("noCompra"));
                 String fechaPago = String.valueOf(rs.getString("fechaPago"));
                 String pacas = String.valueOf(rs.getInt("pacas"));
                 String total = String.valueOf(rs.getFloat("total"));
-
-                String tbData[] = {idCompra, noCompra, fechaPago, pacas, total};
+                double d = Double.parseDouble(total);
+                NumberFormat formatter = NumberFormat.getCurrencyInstance();
+                String e = formatter.format(d);
+                String tbData[] = {idCompra, nombreCliente, noCompra, fechaPago, pacas, e};
                 
-
+                
                 tblModel.addRow(tbData);
+
             }
+            
         }
         catch(Exception e){
 

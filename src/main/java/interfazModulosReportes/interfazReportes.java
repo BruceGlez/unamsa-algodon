@@ -191,8 +191,8 @@ public class interfazReportes extends javax.swing.JFrame {
         // TODO add your handling code here:
        conexionBD conexion = new conexionBD();
               
-       try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\OneDrive\\Documents\\NetBeansProjects\\unamsa-maven\\src\\main\\java\\interfazModulosReportes\\reporteCompras.jrxml"));
+       try{              
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteCompras.jrxml"));
            JasperDesign jd = JRXmlLoader.load(in);
            //String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
            String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
