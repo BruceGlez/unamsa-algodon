@@ -462,11 +462,11 @@ public class interfazDivision extends javax.swing.JFrame {
                 
                 String precio = String.valueOf(rs.getFloat("precio"));
                 double totalPrecio = Double.parseDouble(precio) * Double.parseDouble(quintales);
-                String totsPrecio = Double.toString(totalPrecio);
                 totalDls = totalDls + totalPrecio;
                 
-
-                String tbData[] = {clase, pacas, kilogramos, quintales, precio, totsPrecio};
+                NumberFormat formatter = NumberFormat.getCurrencyInstance();
+                String e = formatter.format(totalPrecio);
+                String tbData[] = {clase, pacas, kilogramos, quintales, precio, e};
                 tblModelPacas.addRow(tbData);               
             }
             totalDls = totalDls - totalCastigos;
@@ -508,6 +508,10 @@ public class interfazDivision extends javax.swing.JFrame {
             float totalQuintales = 0;
             float totalCastigos = 0;
             float porcentajeDivision = Float.parseFloat(txtPorcentaje.getText());
+            
+            
+            NumberFormat a = NumberFormat.getNumberInstance();
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
   
             DefaultTableModel tblDivision = (DefaultTableModel)JTblDivision.getModel();
 
@@ -538,26 +542,27 @@ public class interfazDivision extends javax.swing.JFrame {
                 d = d * porcentajeDivision;
                 pacas = Double.toString(d);
                 totalPacas = totalPacas + d;
-                
+               // String ePacas = a.format(d);
                 
                 String kilogramos = String.valueOf(rs.getInt("kilogramos"));
                 float b = Float.parseFloat(kilogramos);
                 b = b * porcentajeDivision;
                 kilogramos = Float.toString(b);
                 totalKg = totalKg + b;
+                //String ekilogramos = a.format(b);
                 
                 String quintales = String.valueOf(rs.getFloat("quintales"));
                 float c = Float.parseFloat(quintales);
                 c = c * porcentajeDivision;
                 quintales = Float.toString(c);
                 totalQuintales = totalQuintales + c;
+               // String equintales = a.format(c);
                 
                 String precio = String.valueOf(rs.getFloat("precio"));
+               // String eprecio = formatter.format(precio);
                 double totalPrecio = Double.parseDouble(precio) * Double.parseDouble(quintales);
-                //String totsPrecio = Double.toString(totalPrecio);
                 totalDls = totalDls + totalPrecio;
                 
-                NumberFormat formatter = NumberFormat.getCurrencyInstance();
                 String e = formatter.format(totalPrecio);
                 String tbData[] = {clase, pacas, kilogramos, quintales, precio, e};
                 tblDivision.addRow(tbData);
@@ -568,7 +573,6 @@ public class interfazDivision extends javax.swing.JFrame {
             
             Locale usa = new Locale("en", "US");
             NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
-            NumberFormat a = NumberFormat.getNumberInstance();
             
             txtTotalDlsDIV.setText(dollarFormat.format(totalDls));
             txtTotalPacasDIV.setText(a.format(totalPacas));
