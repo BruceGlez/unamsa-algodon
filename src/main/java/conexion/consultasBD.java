@@ -536,4 +536,54 @@ public class consultasBD {
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
         }
     }
+
+    public void registrarDetallesCompra(detalles detalle) {
+        
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO detalles(clase, pacas, kilogramos, quintales, precio, fkDetallesCompra) values(?,?,?,?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, detalle.getClase());
+            ps.setInt(2, detalle.getPacas());
+            ps.setInt(3, detalle.getKilogramos());
+            ps.setFloat(4, detalle.getQuintales());
+            ps.setFloat(5, detalle.getPrecio());
+            ps.setInt(6, detalle.getCompraRelacionada());
+
+            
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
+
+    public void registrarCastigosCompra(castigos castigo) {
+            
+        PreparedStatement ps;
+        String sql;
+        
+        
+        try{
+            con = conectar.getConexion();
+            sql = "INSERT INTO castigos(nombre, cantidad, fkCastigosCompra) values(?,?,?)";
+            
+            ps = con.prepareStatement(sql);
+            
+            ps.setString(1, castigo.getNombre());
+            ps.setFloat(2, castigo.getCantidad());
+            ps.setInt(3, castigo.getIdCompraRelacionada());
+
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Se han insertado los datos");
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+        }
+    }
 }

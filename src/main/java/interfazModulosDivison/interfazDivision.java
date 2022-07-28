@@ -4,7 +4,14 @@
  */
 package interfazModulosDivison;
 
+import conexion.conexionBD;
 import interfazModulosPrincipal.interfazPrincipal;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,23 +35,64 @@ public class interfazDivision extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        JTableDatosPacas = new javax.swing.JTable();
+        btnAbrirDetalles = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        btnCapturarDatos = new javax.swing.JButton();
+        txtCompra = new javax.swing.JTextField();
+        txtTotalKg = new javax.swing.JTextField();
+        txtTotalPacas = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtTotalQuintales = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtTotalDls = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        JTableCastigos = new javax.swing.JTable();
+        lblTotalesCastigos = new javax.swing.JLabel();
+        txtTotalesCastigos = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTblDivision = new javax.swing.JTable();
+        btnDividirCompra = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtPorcentaje = new javax.swing.JTextField();
+        txtTotalKgDIV = new javax.swing.JTextField();
+        lblTotalesCastigos1 = new javax.swing.JLabel();
+        txtTotalPacasDIV = new javax.swing.JTextField();
+        txtTotalesCastigosDIV = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtTotalQuintalesDIV = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        txtTotalDlsDIV = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("Busqueda");
+        jLabel1.setText("COMPRA");
 
-        jLabel1.setText("Buscar Compra:");
+        JTableDatosPacas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jButton1.setText("Dividir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            },
+            new String [] {
+                "CLASE", "PACAS", "KILOS", "QUINTALES", "PRECIO", "TOTAL"
+            }
+        ));
+        jScrollPane1.setViewportView(JTableDatosPacas);
+
+        btnAbrirDetalles.setText("Abrir Detalles");
+        btnAbrirDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAbrirDetallesActionPerformed(evt);
             }
         });
 
@@ -55,66 +103,497 @@ public class interfazDivision extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        btnCapturarDatos.setText("Capturar Datos");
+        btnCapturarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCapturarDatosActionPerformed(evt);
+            }
+        });
+
+        txtTotalKg.setEditable(false);
+
+        txtTotalPacas.setEditable(false);
+        txtTotalPacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalPacasActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("PACAS");
+
+        jLabel5.setText("KILOGRAMOS");
+
+        jLabel6.setText("TOTALES");
+
+        jLabel7.setText("QUINTALES");
+
+        txtTotalQuintales.setEditable(false);
+
+        jLabel8.setText("TOTAL DLS");
+
+        txtTotalDls.setEditable(false);
+        txtTotalDls.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalDlsActionPerformed(evt);
+            }
+        });
+
+        JTableCastigos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Cantidad"
+            }
+        ));
+        jScrollPane2.setViewportView(JTableCastigos);
+
+        lblTotalesCastigos.setText("CASTIGOS");
+
+        txtTotalesCastigos.setEditable(false);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("INFORMACION DESGLOSADA DE PACAS");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("CASTIGOS APLICADOS");
+
+        JTblDivision.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "CLASE", "PACAS", "KILOS", "QUINTALES", "PRECIO", "TOTAL"
+            }
+        ));
+        jScrollPane3.setViewportView(JTblDivision);
+
+        btnDividirCompra.setText("DIVIDIR COMPRA");
+        btnDividirCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDividirCompraActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("PORCENTAJE");
+
+        txtTotalKgDIV.setEditable(false);
+
+        lblTotalesCastigos1.setText("CASTIGOS");
+
+        txtTotalPacasDIV.setEditable(false);
+        txtTotalPacasDIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalPacasDIVActionPerformed(evt);
+            }
+        });
+
+        txtTotalesCastigosDIV.setEditable(false);
+
+        jLabel10.setText("PACAS");
+
+        jLabel11.setText("KILOGRAMOS");
+
+        jLabel12.setText("TOTALES");
+
+        jLabel13.setText("QUINTALES");
+
+        txtTotalQuintalesDIV.setEditable(false);
+
+        jLabel14.setText("TOTAL DLS");
+
+        txtTotalDlsDIV.setEditable(false);
+        txtTotalDlsDIV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalDlsDIVActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel15.setText("DIVISION");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jLabel1)
-                .addGap(57, 57, 57)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(125, 125, 125)
+                                .addComponent(jLabel4))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(58, 58, 58)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnCapturarDatos)
+                                        .addComponent(btnAbrirDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalQuintales, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel2))
+                                    .addComponent(lblTotalesCastigos, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtTotalesCastigos, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtTotalKg)
+                                        .addComponent(txtTotalPacas, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtTotalDls, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(24, 24, 24))
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(214, 214, 214)
+                                .addComponent(jLabel6)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel13)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtTotalQuintalesDIV, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel10))
+                                        .addComponent(lblTotalesCastigos1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtTotalesCastigosDIV, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtTotalKgDIV)
+                                            .addComponent(txtTotalPacasDIV, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtTotalDlsDIV, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel15)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(111, 111, 111)
+                                    .addComponent(jLabel12)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDividirCompra)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDividirCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPorcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                        .addGap(27, 27, 27))
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtTotalPacasDIV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalKgDIV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalQuintalesDIV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalesCastigosDIV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotalesCastigos1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalDlsDIV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6))
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtTotalPacas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtTotalKg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtTotalQuintales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtTotalesCastigos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTotalesCastigos))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtTotalDls, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAbrirDetalles, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCapturarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         interfazModulosPrincipal.interfazPrincipal verformulario = new interfazPrincipal();
-             
+        
         verformulario.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnCapturarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCapturarDatosActionPerformed
+        // TODO add your handling code here:
+        capturaDatosPacas verformulario = new capturaDatosPacas();
+        
+        verformulario.setVisible(true);
+
+    }//GEN-LAST:event_btnCapturarDatosActionPerformed
+
+    private void btnAbrirDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirDetallesActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+           
+            conexionBD conexion = new conexionBD();
+            int clave = Integer.parseInt(txtCompra.getText());
+            double totalPacas = 0;
+            double totalDls = 0;
+            int totalKg = 0;
+            float totalQuintales = 0;
+            float totalCastigos = 0;
+            
+            DefaultTableModel tblModelPacas = (DefaultTableModel)JTableDatosPacas.getModel();
+            DefaultTableModel tblModelCastigos = (DefaultTableModel)JTableCastigos.getModel();
+            
+            tblModelPacas.setRowCount(0);
+            tblModelCastigos.setRowCount(0);
+            
+            Statement st = conexion.getConexion().createStatement();
+
+            String sql2 = "SELECT * FROM castigos INNER JOIN compras ON castigos.fkCastigosCompra = compras.idcompras WHERE noCompra = " + clave;
+            ResultSet rt = st.executeQuery(sql2);
+            
+            while(rt.next()){
+                String nombre = String.valueOf(rt.getString("nombre"));
+                String cantidadCastigo = String.valueOf(rt.getFloat("cantidad"));
+                float h = Float.parseFloat(cantidadCastigo);
+                totalCastigos = totalCastigos + h;
+                
+                String tbData[] = {nombre, cantidadCastigo};
+                tblModelCastigos.addRow(tbData);
+                
+            }
+            
+            String sql = "SELECT * FROM detalles INNER JOIN compras ON detalles.fkDetallesCompra = compras.idcompras WHERE noCompra = " + clave;
+            ResultSet rs = st.executeQuery(sql);
+
+            while(rs.next()){           
+
+                String clase = String.valueOf(rs.getString("clase"));
+                
+                String pacas = String.valueOf(rs.getInt("pacas"));
+                double d = Double.parseDouble(pacas);
+                totalPacas = totalPacas + d;
+                
+                String kilogramos = String.valueOf(rs.getInt("kilogramos"));
+                int b = Integer.parseInt(kilogramos);
+                totalKg = totalKg + b;
+                
+                String quintales = String.valueOf(rs.getFloat("quintales"));
+                float c = Float.parseFloat(quintales);
+                totalQuintales = totalQuintales + c;
+                
+                String precio = String.valueOf(rs.getFloat("precio"));
+                double totalPrecio = Double.parseDouble(precio) * Double.parseDouble(quintales);
+                String totsPrecio = Double.toString(totalPrecio);
+                totalDls = totalDls + totalPrecio;
+                
+
+                String tbData[] = {clase, pacas, kilogramos, quintales, precio, totsPrecio};
+                tblModelPacas.addRow(tbData);               
+            }
+            totalDls = totalDls - totalCastigos;
+
+            
+            Locale usa = new Locale("en", "US");
+            NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+            NumberFormat a = NumberFormat.getNumberInstance();
+            
+            txtTotalDls.setText(dollarFormat.format(totalDls));
+            txtTotalPacas.setText(a.format(totalPacas));
+            txtTotalKg.setText(a.format(totalKg));
+            txtTotalQuintales.setText(a.format(totalQuintales));
+            txtTotalesCastigos.setText(a.format(totalCastigos));
+            
+            
+        }
+        catch(Exception e){
+
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_btnAbrirDetallesActionPerformed
+
+    private void txtTotalDlsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalDlsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalDlsActionPerformed
+
+    private void btnDividirCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDividirCompraActionPerformed
+        // TODO add your handling code here:
+        
+                
+        try {
+           
+            conexionBD conexion = new conexionBD();
+            int clave = Integer.parseInt(txtCompra.getText());
+            double totalPacas = 0;
+            double totalDls = 0;
+            float totalKg = 0;
+            float totalQuintales = 0;
+            float totalCastigos = 0;
+            float porcentajeDivision = Float.parseFloat(txtPorcentaje.getText());
+  
+            DefaultTableModel tblDivision = (DefaultTableModel)JTblDivision.getModel();
+
+            tblDivision.setRowCount(0);
+            
+            Statement st = conexion.getConexion().createStatement();
+            
+            String sql2 = "SELECT * FROM castigos INNER JOIN compras ON castigos.fkCastigosCompra = compras.idcompras WHERE noCompra = " + clave;
+            ResultSet rt = st.executeQuery(sql2);
+            
+            while(rt.next()){
+                
+                String cantidadCastigo = String.valueOf(rt.getFloat("cantidad"));
+                float h = Float.parseFloat(cantidadCastigo);
+                h = h * porcentajeDivision;
+                totalCastigos = totalCastigos + h;              
+            }
+            
+            String sql = "SELECT * FROM detalles INNER JOIN compras ON detalles.fkDetallesCompra = compras.idcompras WHERE noCompra = " + clave;
+            ResultSet rs = st.executeQuery(sql);
+
+            while(rs.next()){           
+
+                String clase = String.valueOf(rs.getString("clase"));
+                
+                String pacas = String.valueOf(rs.getInt("pacas"));
+                double d = Double.parseDouble(pacas);
+                d = d * porcentajeDivision;
+                pacas = Double.toString(d);
+                totalPacas = totalPacas + d;
+                
+                
+                String kilogramos = String.valueOf(rs.getInt("kilogramos"));
+                float b = Float.parseFloat(kilogramos);
+                b = b * porcentajeDivision;
+                kilogramos = Float.toString(b);
+                totalKg = totalKg + b;
+                
+                String quintales = String.valueOf(rs.getFloat("quintales"));
+                float c = Float.parseFloat(quintales);
+                c = c * porcentajeDivision;
+                quintales = Float.toString(c);
+                totalQuintales = totalQuintales + c;
+                
+                String precio = String.valueOf(rs.getFloat("precio"));
+                double totalPrecio = Double.parseDouble(precio) * Double.parseDouble(quintales);
+                //String totsPrecio = Double.toString(totalPrecio);
+                totalDls = totalDls + totalPrecio;
+                
+                NumberFormat formatter = NumberFormat.getCurrencyInstance();
+                String e = formatter.format(totalPrecio);
+                String tbData[] = {clase, pacas, kilogramos, quintales, precio, e};
+                tblDivision.addRow(tbData);
+               
+            }
+            totalDls = totalDls - totalCastigos;
+
+            
+            Locale usa = new Locale("en", "US");
+            NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+            NumberFormat a = NumberFormat.getNumberInstance();
+            
+            txtTotalDlsDIV.setText(dollarFormat.format(totalDls));
+            txtTotalPacasDIV.setText(a.format(totalPacas));
+            txtTotalKgDIV.setText(a.format(totalKg));
+            txtTotalQuintalesDIV.setText(a.format(totalQuintales));
+            txtTotalesCastigosDIV.setText(a.format(totalCastigos));
+        }
+        catch(Exception e){
+
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }//GEN-LAST:event_btnDividirCompraActionPerformed
+
+    private void txtTotalPacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPacasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPacasActionPerformed
+
+    private void txtTotalPacasDIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPacasDIVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPacasDIVActionPerformed
+
+    private void txtTotalDlsDIVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalDlsDIVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalDlsDIVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +632,44 @@ public class interfazDivision extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable JTableCastigos;
+    private javax.swing.JTable JTableDatosPacas;
+    private javax.swing.JTable JTblDivision;
+    private javax.swing.JButton btnAbrirDetalles;
+    private javax.swing.JButton btnCapturarDatos;
+    private javax.swing.JButton btnDividirCompra;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblTotalesCastigos;
+    private javax.swing.JLabel lblTotalesCastigos1;
+    private javax.swing.JTextField txtCompra;
+    private javax.swing.JTextField txtPorcentaje;
+    private javax.swing.JTextField txtTotalDls;
+    private javax.swing.JTextField txtTotalDlsDIV;
+    private javax.swing.JTextField txtTotalKg;
+    private javax.swing.JTextField txtTotalKgDIV;
+    private javax.swing.JTextField txtTotalPacas;
+    private javax.swing.JTextField txtTotalPacasDIV;
+    private javax.swing.JTextField txtTotalQuintales;
+    private javax.swing.JTextField txtTotalQuintalesDIV;
+    private javax.swing.JTextField txtTotalesCastigos;
+    private javax.swing.JTextField txtTotalesCastigosDIV;
     // End of variables declaration//GEN-END:variables
 }
