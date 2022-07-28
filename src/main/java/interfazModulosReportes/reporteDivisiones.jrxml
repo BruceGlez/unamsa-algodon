@@ -3,8 +3,11 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones ON divisiones.fkClienteDivision = clientes.idclientes WHERE compras.noCompra = 1;]]>
+		<![CDATA[SELECT * FROM compras INNER JOIN divisiones ON divisiones.fkClienteDivision = compras.fkCliente INNER JOIN clientes ON compras.fkCliente = clientes.idclientes WHERE compras.noCompra = 1;]]>
 	</queryString>
 	<field name="idcompras" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -28,6 +31,24 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="fkClienteComprador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="iddivisiones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="noDivision" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisionPacas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisionTotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkCompra" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkClienteDivision" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="idclientes" class="java.lang.Integer">
@@ -55,24 +76,6 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="fkContador" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="iddivisiones" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="noDivision" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="divisionPacas" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="divisionTotal" class="java.lang.Float">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="fkCompra" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="fkClienteDivision" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -108,98 +111,62 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="50">
+		<band height="88">
 			<staticText>
-				<reportElement x="137" y="0" width="320" height="39" uuid="cd8c86b6-a84e-4c77-9135-4009d1c6e040"/>
+				<reportElement x="137" y="0" width="320" height="36" uuid="cd8c86b6-a84e-4c77-9135-4009d1c6e040"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE DIVISIONES]]></text>
 			</staticText>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="111" splitType="Stretch">
 			<staticText>
-				<reportElement x="2" y="21" width="100" height="20" uuid="da0c6eab-5fe9-4924-973f-795ec09f9446"/>
+				<reportElement x="57" y="48" width="100" height="20" uuid="da0c6eab-5fe9-4924-973f-795ec09f9446"/>
 				<text><![CDATA[NO. COMPRA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="102" y="21" width="178" height="20" uuid="c6d602b9-8434-41ec-b773-46d18ecc3747"/>
+				<reportElement x="157" y="48" width="178" height="20" uuid="c6d602b9-8434-41ec-b773-46d18ecc3747"/>
 				<text><![CDATA[CLIENTE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="21" width="100" height="20" uuid="b2af6b6c-5fe3-44c4-ac1d-db14a36a4770"/>
+				<reportElement x="337" y="48" width="100" height="20" uuid="b2af6b6c-5fe3-44c4-ac1d-db14a36a4770"/>
 				<text><![CDATA[PACAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="382" y="21" width="100" height="20" uuid="9c32e6b3-2519-4961-83b9-2b2ff88897b2"/>
+				<reportElement x="437" y="48" width="100" height="20" uuid="9c32e6b3-2519-4961-83b9-2b2ff88897b2"/>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="41" width="100" height="20" uuid="d0f0abae-f8f0-4d67-80c1-3db1736b7bf2"/>
+				<reportElement x="55" y="68" width="100" height="20" uuid="d0f0abae-f8f0-4d67-80c1-3db1736b7bf2"/>
 				<textFieldExpression><![CDATA[$F{noCompra}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="102" y="41" width="178" height="20" uuid="70f7df71-137c-48a7-8ece-1270befdc270"/>
+				<reportElement x="157" y="68" width="178" height="20" uuid="70f7df71-137c-48a7-8ece-1270befdc270"/>
 				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="282" y="41" width="100" height="20" uuid="1da88322-985b-4dcd-bc88-6515991d3484"/>
+				<reportElement x="337" y="68" width="100" height="20" uuid="1da88322-985b-4dcd-bc88-6515991d3484"/>
 				<textFieldExpression><![CDATA[$F{pacas}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤ #,##0.00">
-				<reportElement x="382" y="41" width="100" height="20" uuid="23556ad2-a4e9-47f0-9cde-21585e137c0c"/>
+				<reportElement x="437" y="68" width="100" height="20" uuid="23556ad2-a4e9-47f0-9cde-21585e137c0c"/>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="127" y="71" width="320" height="33" uuid="611b1608-2e74-412f-b0b0-e7ef94e9e751"/>
-				<textElement textAlignment="Center">
-					<font fontName="Serif" size="16" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Divisiones de la compra]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="158" y="2" width="100" height="20" uuid="5807b7b3-9c6f-46f0-8bca-44a600d54a90"/>
-				<text><![CDATA[fkClienteDivision]]></text>
-			</staticText>
 		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
 		<band height="63">
-			<textField>
-				<reportElement x="0" y="20" width="100" height="20" uuid="39c3a6cf-a9b1-4c7c-985b-0a86c33c432c"/>
-				<textFieldExpression><![CDATA[$F{noDivision}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="a308107f-f8ae-44b3-85bd-8fc0ac267f0c"/>
-				<text><![CDATA[NO. DIVISION]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="282" y="20" width="100" height="20" uuid="66258708-c010-434b-af58-e053c7ee47bf"/>
-				<textFieldExpression><![CDATA[$F{divisionPacas}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="282" y="0" width="100" height="20" uuid="254c0720-f262-4715-9891-c636fa92fdf6"/>
-				<text><![CDATA[PACAS]]></text>
-			</staticText>
-			<textField pattern="¤ #,##0.00">
-				<reportElement x="382" y="20" width="100" height="20" uuid="7519ca16-c7d4-4fe4-851c-008498c83b53"/>
-				<textFieldExpression><![CDATA[$F{divisionTotal}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="382" y="0" width="100" height="20" uuid="07a686fb-02b2-4543-967a-ce5e43cbdda2"/>
-				<text><![CDATA[TOTAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="102" y="0" width="178" height="20" uuid="271a0d7f-40b4-4577-9572-a70bd4e6fceb"/>
-				<text><![CDATA[CLIENTE]]></text>
-			</staticText>
 			<elementGroup/>
-			<textField>
-				<reportElement x="102" y="20" width="178" height="20" uuid="fe7ee9af-e709-4893-b62c-813826e3ef5e"/>
-				<textFieldExpression><![CDATA[$F{fkClienteDivision}]]></textFieldExpression>
-			</textField>
+			<subreport isUsingCache="false" runToBottom="true">
+				<reportElement x="7" y="0" width="548" height="63" uuid="60ada3f5-8357-42d1-bf69-daec95400fd3"/>
+				<subreportParameter name="iddivisiones">
+					<subreportParameterExpression><![CDATA[$F{iddivisiones}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subReporteDivisiones.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</detail>
 	<columnFooter>

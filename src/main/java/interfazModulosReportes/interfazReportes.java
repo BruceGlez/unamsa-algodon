@@ -114,22 +114,6 @@ public class interfazReportes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnReportesCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistroClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(btnReportesCompradores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnReportesPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReportesDivisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReportesContadores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,6 +123,22 @@ public class interfazReportes extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(88, 88, 88)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnReportesCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReportesCompradores, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReportesDivisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReportesContadores, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnRegistroClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(btnReportesPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,7 +150,7 @@ public class interfazReportes extends javax.swing.JFrame {
                     .addComponent(btnRegistroClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReportesPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReportesCompras, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReportesContadores, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
@@ -214,15 +214,37 @@ public class interfazReportes extends javax.swing.JFrame {
 
     private void btnReportesCompradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesCompradoresActionPerformed
         // TODO add your handling code here:
+         conexionBD conexion = new conexionBD();
+              
+       try{              
+           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteCompradores.jrxml"));
+           JasperDesign jd = JRXmlLoader.load(in);
+           String sql = "SELECT * FROM compradores;";
+           JRDesignQuery newQuery = new JRDesignQuery();
+           newQuery.setText(sql);
+           jd.setQuery(newQuery);
+           JasperReport jr = JasperCompileManager.compileReport(jd);
+           HashMap para = new HashMap();
+           JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
+           JasperViewer.viewReport(j, false);
+           
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null, e);
+       }
+        
     }//GEN-LAST:event_btnReportesCompradoresActionPerformed
 
     private void btnReportesPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesPagosActionPerformed
         // TODO add your handling code here:
+        seleccionCompraPagos verFormulario = new seleccionCompraPagos();
+        
+        verFormulario.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnReportesPagosActionPerformed
 
     private void btnReportesDivisionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesDivisionesActionPerformed
         // TODO add your handling code here:
-        seleccionCompra verFormulario = new seleccionCompra();
+        seleccionCompraDivisiones verFormulario = new seleccionCompraDivisiones();
         
         verFormulario.setVisible(true);
         dispose();

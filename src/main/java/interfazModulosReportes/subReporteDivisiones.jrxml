@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteDivisiones_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="b248eabd-42d5-4a80-b9cf-b446c497973f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM divisiones INNER JOIN clientes ON clientes.idclientes = divisiones.fkClienteDivision JOIN compras WHERE noCompra = 1;]]>
+	</queryString>
+	<field name="iddivisiones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="noDivision" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisionPacas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="divisionTotal" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkCompra" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkClienteDivision" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idclientes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoPostal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RFC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkRegimen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkContador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idcompras" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="noCompra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaLiquidacion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaPago" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pacas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkClienteComprador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81">
+			<image scaleImage="FillFrame">
+				<reportElement x="83" y="5" width="68" height="62" uuid="d02e3676-3576-4ceb-a8ba-067d30d13a77"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="216" y="43" width="216" height="19" uuid="a4cea678-9877-4902-8269-d5277c1e2ef3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="5" width="302" height="19" uuid="f330e8ab-9190-448b-b39f-96dc30b19ef9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[UNION ALGODONERA MOCTEZUMA SA DE CV 				]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="24" width="216" height="19" uuid="b403a80a-33c3-43d1-b1a7-3f343846052b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<staticText>
+				<reportElement x="139" y="0" width="320" height="36" uuid="2744ed5d-4ef0-43a4-8168-1a66e5bef3e3"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE DIVISIONES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="319" y="57" width="100" height="20" uuid="b078756a-a7b6-4f7d-8d22-f212e0e28458"/>
+				<textFieldExpression><![CDATA[$F{divisionPacas}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="419" y="57" width="100" height="20" uuid="36ca7615-da54-46d0-b8ff-73ad6c4681eb"/>
+				<textFieldExpression><![CDATA[$F{divisionTotal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="37" y="57" width="100" height="20" uuid="5546e95e-13cb-416e-8472-d7371a589844"/>
+				<textFieldExpression><![CDATA[$F{noDivision}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="57" width="178" height="20" uuid="0caa7623-ba68-4b3d-8ad7-a787a10ee96e"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="419" y="37" width="100" height="20" uuid="3ca98a7f-a467-44ef-9416-0a3617002a1a"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="37" width="178" height="20" uuid="97183d36-a69b-4436-b15a-47b2e938a228"/>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="37" y="37" width="100" height="20" uuid="bf05027f-f7d9-4059-9500-5f511631efdf"/>
+				<text><![CDATA[NO. DIVISION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="37" width="100" height="20" uuid="f365919d-4607-4e92-adf6-29d414b61792"/>
+				<text><![CDATA[PACAS]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

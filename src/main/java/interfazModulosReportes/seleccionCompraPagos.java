@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -18,6 +19,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
@@ -25,12 +27,12 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author bruce
  */
-public class seleccionCompra extends javax.swing.JFrame {
+public class seleccionCompraPagos extends javax.swing.JFrame {
 
     /**
      * Creates new form seleccionCliente
      */
-    public seleccionCompra() {
+    public seleccionCompraPagos() {
         initComponents();
     }
 
@@ -107,21 +109,34 @@ public class seleccionCompra extends javax.swing.JFrame {
        String clave = txtSeleccionCompra.getText();
        
        try{
-           InputStream in = new FileInputStream(new File("C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteDivisiones.jrxml"));
-           JasperDesign jd = JRXmlLoader.load(in);
-           //String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes";
-           String sql = "SELECT * FROM compras INNER JOIN clientes ON compras.fkCliente = clientes.idclientes INNER JOIN divisiones ON compras.idcompras = divisiones.fkCompra WHERE noCompra = " + clave;
-           JRDesignQuery newQuery = new JRDesignQuery();
-           newQuery.setText(sql);
-           jd.setQuery(newQuery);
-           JasperReport jr = JasperCompileManager.compileReport(jd);
-           HashMap para = new HashMap();
-           JasperPrint j = JasperFillManager.fillReport(jr,para,conexion.getConexion());
-           JasperViewer.viewReport(j, false);
-           //OutputStream os = new FileOutputStream(new File("C:\\Users"));
-           //JasperExportManager.exportReportToPdfFile(j, os);
-           
-       }catch(Exception e){
+       String masterSource ="C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reporteDivisiones.jrxml";
+       String subSource = "C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\reportePagos.jrxml";
+       
+       /*InputStream in = new FileInputStream(new File(subSource));
+       JasperDesign jd = JRXmlLoader.load(in);
+       String sql = "SELECT * FROM compras INNER JOIN divisiones ON divisiones.fkClienteDivision = compras.fkCliente INNER JOIN clientes ON compras.fkCliente = clientes.idclientes WHERE compras.noCompra = " + clave;
+       JRDesignQuery newQuery = new JRDesignQuery();
+       newQuery.setText(sql);
+       jd.setQuery(newQuery);
+       JasperReport jr = JasperCompileManager.compileReport(jd);*/
+       
+       InputStream im = new FileInputStream(new File(subSource));
+       JasperDesign jd = JRXmlLoader.load(im);
+       String sql = "SELECT * FROM pagos INNER JOIN compras ON pagos.fkCompraRelacionada = compras.idcompras INNER JOIN clientes ON clientes.idclientes = compras.fkCliente WHERE noCompra = " + clave;
+       JRDesignQuery newQuery = new JRDesignQuery();
+       newQuery.setText(sql);
+       jd.setQuery(newQuery);
+       JasperReport jr = JasperCompileManager.compileReport(jd);
+
+       // HashMap parameters = new HashMap();
+       //parameters.put("SUBREPORT_DIR", js);
+       
+       HashMap parameters = new HashMap();
+       JasperPrint j = JasperFillManager.fillReport(jr, parameters, conexion.getConexion());
+       JasperViewer.viewReport(j, false);
+       
+       }
+       catch(Exception e){
            JOptionPane.showMessageDialog(null, e);
        }
     }//GEN-LAST:event_btnSeleccionCompraActionPerformed
@@ -151,21 +166,23 @@ public class seleccionCompra extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompraPagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompraPagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompraPagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(seleccionCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(seleccionCompraPagos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new seleccionCompra().setVisible(true);
+                new seleccionCompraPagos().setVisible(true);
             }
         });
     }

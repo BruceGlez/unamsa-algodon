@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="856ff695-2ee6-4135-86c1-617c97a9031a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM compradores;]]>
+	</queryString>
+	<field name="idcompradores" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RFC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoPostal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="86" y="0" width="68" height="62" uuid="f778550b-1ff0-435b-bd9e-04756b17ad95"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="213" y="19" width="216" height="19" uuid="f6093d36-a936-4790-87f0-241ba5c9b857"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="38" width="216" height="19" uuid="9e050b93-751a-4145-a401-554366270f6b"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="0" width="302" height="19" uuid="eae8636a-622e-46e5-9849-ff70a5a76c4a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[UNION ALGODONERA MOCTEZUMA SA DE CV 				]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="72" y="0" width="463" height="35" uuid="f172ae15-a8d3-4333-8de5-e3f5ce2165ea"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE COMPRADORES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="392" y="41" width="100" height="20" uuid="afa188d3-11af-41c0-8e89-f859bf000d9c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="41" width="163" height="20" uuid="c56c4959-d4c2-48fe-8ad9-4821825bb619"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="129" y="41" width="100" height="20" uuid="44f6891f-7480-4e90-8496-0560d521834a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="229" y="0" width="163" height="20" uuid="5621182f-ab01-468d-bbfd-e8e074556b92"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="129" y="0" width="100" height="20" uuid="dad1a8a4-47c9-429c-b0e0-9a153b1121af"/>
+				<textFieldExpression><![CDATA[$F{idcompradores}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="0" width="100" height="20" uuid="cfdae212-2339-461d-8d34-a880410e7798"/>
+				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

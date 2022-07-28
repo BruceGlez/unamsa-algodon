@@ -4,6 +4,7 @@
  */
 package interfazModulosPrincipal;
 
+import clases.calculos;
 import conexion.conexionBD;
 import conexion.consultasBD;
 import interfazModulosCaptura.interfazCaptura;
@@ -13,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -47,6 +50,10 @@ public class interfazPrincipal extends javax.swing.JFrame {
         btnActualizarTabla = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableDatosDB = new javax.swing.JTable();
+        txtTotalPacas = new javax.swing.JTextField();
+        txtTotalDolares = new javax.swing.JTextField();
+        lblPacas = new javax.swing.JLabel();
+        lblDolares = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,6 +108,26 @@ public class interfazPrincipal extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableDatosDB);
 
+        txtTotalPacas.setEditable(false);
+        txtTotalPacas.setBackground(new java.awt.Color(204, 255, 255));
+        txtTotalPacas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTotalPacasMouseClicked(evt);
+            }
+        });
+        txtTotalPacas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTotalPacasActionPerformed(evt);
+            }
+        });
+
+        txtTotalDolares.setEditable(false);
+        txtTotalDolares.setBackground(new java.awt.Color(204, 255, 255));
+
+        lblPacas.setText("PACAS:");
+
+        lblDolares.setText("DOLARES:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,13 +138,27 @@ public class interfazPrincipal extends javax.swing.JFrame {
                     .addComponent(btnPrincipalCapturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPrincipalDivisiones, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(btnPrincipalReportes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(449, Short.MAX_VALUE)
-                .addComponent(btnActualizarTabla)
-                .addGap(353, 353, 353))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(btnActualizarTabla)
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblDolares)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lblPacas)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTotalPacas, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(89, 89, 89))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,15 +169,26 @@ public class interfazPrincipal extends javax.swing.JFrame {
                         .addComponent(btnPrincipalCapturas, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnPrincipalDivisiones, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(btnPrincipalReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(btnActualizarTabla)
-                .addGap(28, 28, 28))
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalPacas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPacas))
+                        .addGap(1, 1, 1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPrincipalReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTotalDolares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDolares)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btnActualizarTabla)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,6 +223,8 @@ public class interfazPrincipal extends javax.swing.JFrame {
             try {
            
             conexionBD conexion = new conexionBD();
+            double totalDolares = 0;
+            double totalPacas = 0;
             
             DefaultTableModel tblModel = (DefaultTableModel)jTableDatosDB.getModel();
             
@@ -189,9 +243,15 @@ public class interfazPrincipal extends javax.swing.JFrame {
                 String nombreCliente = String.valueOf(rs.getString("nombre"));
                 String noCompra = String.valueOf(rs.getString("noCompra"));
                 String fechaPago = String.valueOf(rs.getString("fechaPago"));
+                
                 String pacas = String.valueOf(rs.getInt("pacas"));
+                double c = Double.parseDouble(pacas);
+                totalPacas = totalPacas + c;
+                
                 String total = String.valueOf(rs.getFloat("total"));
                 double d = Double.parseDouble(total);
+                totalDolares = totalDolares + d;
+                
                 NumberFormat formatter = NumberFormat.getCurrencyInstance();
                 String e = formatter.format(d);
                 String tbData[] = {idCompra, nombreCliente, noCompra, fechaPago, pacas, e};
@@ -200,6 +260,13 @@ public class interfazPrincipal extends javax.swing.JFrame {
                 tblModel.addRow(tbData);
 
             }
+                       
+            Locale usa = new Locale("en", "US");
+            NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(usa);
+            NumberFormat a = NumberFormat.getNumberInstance();
+            
+            txtTotalDolares.setText(dollarFormat.format(totalDolares));
+            txtTotalPacas.setText(a.format(totalPacas));
             
         }
         catch(Exception e){
@@ -207,6 +274,15 @@ public class interfazPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_btnActualizarTablaActionPerformed
+
+    private void txtTotalPacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPacasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalPacasActionPerformed
+
+    private void txtTotalPacasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTotalPacasMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_txtTotalPacasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -252,5 +328,9 @@ public class interfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableDatosDB;
+    private javax.swing.JLabel lblDolares;
+    private javax.swing.JLabel lblPacas;
+    private javax.swing.JTextField txtTotalDolares;
+    private javax.swing.JTextField txtTotalPacas;
     // End of variables declaration//GEN-END:variables
 }

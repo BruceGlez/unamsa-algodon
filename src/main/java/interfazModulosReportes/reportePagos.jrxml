@@ -3,8 +3,8 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT * FROM pagos;]]>
+	<queryString>
+		<![CDATA[SELECT * FROM pagos INNER JOIN compras ON pagos.fkCompraRelacionada = compras.idcompras INNER JOIN clientes ON clientes.idclientes = compras.fkCliente WHERE noCompra = 1;]]>
 	</queryString>
 	<field name="idpagos" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -30,6 +30,60 @@
 	<field name="montoDLS" class="java.lang.Float">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="idcompras" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="noCompra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fechaLiquidacion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkCliente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pacas" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkClienteComprador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="idclientes" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="codigoPostal" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="RFC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkRegimen" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fkContador" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="montoDLS_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{montoDLS}]]></variableExpression>
+	</variable>
+	<variable name="total_1" class="java.lang.Float" resetType="Column" calculation="Variance">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -39,29 +93,146 @@
 				<reportElement x="455" y="0" width="100" height="20" uuid="1b03aba9-f12e-43c9-b17e-a2457eb97495"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="58" y="0" width="68" height="62" uuid="ef88e3e1-764f-40e8-9ac9-5d48cf51abe2"/>
+				<imageExpression><![CDATA["C:\\Users\\bruce\\Documents\\NetBeansProjects\\unamsa-trabajo\\unamsa-algodon\\src\\main\\java\\interfazModulosReportes\\LOGO 1.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="191" y="19" width="216" height="19" uuid="a647e169-486f-4c83-90b1-3667bc210074"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[COL. MOCTEZUMA CP 32840]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="144" y="0" width="302" height="19" uuid="d6bda212-b42c-4ba5-9c33-b3506f3b547b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[UNION ALGODONERA MOCTEZUMA SA DE CV 				]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="38" width="216" height="19" uuid="a661b9ae-c455-4401-b516-00bcf4f81f96"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="12"/>
+				</textElement>
+				<text><![CDATA[CARR. PANAMERICANA KM 167.50]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="106" splitType="Stretch">
+			<staticText>
+				<reportElement x="144" y="0" width="324" height="36" uuid="e79ccc5e-b553-4391-9bd3-ebabc747f543"/>
+				<textElement textAlignment="Center">
+					<font fontName="Serif" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE PAGOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="69" y="71" width="122" height="20" uuid="4f3dd5cc-36de-4ff8-ac28-65d35b3b86f3"/>
+				<textFieldExpression><![CDATA[$F{noCompra}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="69" y="51" width="122" height="20" uuid="946f23cc-e246-4dee-ab22-5b2e0c55086f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO. COMPRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="51" width="185" height="20" uuid="8a15264a-52cb-48ac-9d87-0ecc9afec703"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="71" width="185" height="20" uuid="0461d6d9-0df2-464a-b5d5-0bdff15b3562"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="376" y="51" width="139" height="20" uuid="2af131f1-ea9e-4a1d-91be-c631b751968a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DE COMPRA:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="376" y="71" width="139" height="20" uuid="813b6129-2957-4d15-8767-18888b23745b"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="61" y="0" width="100" height="20" uuid="e74920b6-f878-4754-845d-d0931ca45033"/>
+				<text><![CDATA[FECHA DE PAGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="161" y="0" width="100" height="20" uuid="0500c123-4856-4562-af7b-77dc7d6bb198"/>
+				<text><![CDATA[MONEDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="56" height="20" uuid="eca23457-b14e-4f9e-b445-b85ce1b81a3c"/>
+				<text><![CDATA[FOLIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="0" width="100" height="20" uuid="753e4e5e-b00d-4070-b9e2-c6d7fd762840"/>
+				<text><![CDATA[TIPO DE CAMBIO	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="0" width="100" height="20" uuid="fcbfa8c9-790c-43b8-b9d0-7170557c785a"/>
+				<text><![CDATA[MONTO EN DLS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="363" y="0" width="92" height="20" uuid="bf793c52-ff7d-400e-9f2f-aacb892e6410"/>
+				<text><![CDATA[MONTO PAGADO]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="31" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-8" y="0" width="565" height="20" uuid="9c99bcdf-03a8-4204-aabc-f68e3ccf83f4"/>
+			</rectangle>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="363" y="0" width="92" height="20" uuid="753d30b4-4276-41d2-9d99-710e7a6cbbf6"/>
+				<textFieldExpression><![CDATA[$F{montoPagado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="61" y="0" width="100" height="20" uuid="2885da29-0827-4cb0-8a68-fd2b317452ef"/>
+				<textFieldExpression><![CDATA[$F{fechaPago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="0" width="100" height="20" uuid="faa7d6f1-02bf-418c-b801-4627ed5c90fb"/>
+				<textFieldExpression><![CDATA[$F{moneda}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="56" height="20" uuid="15dcfbfc-a03b-4934-9ab3-e3296cd6e3d6"/>
+				<textFieldExpression><![CDATA[$F{idpagos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="0" width="100" height="20" uuid="68eb8087-2f2e-4c15-b137-8add2993f6a8"/>
+				<textFieldExpression><![CDATA[$F{tipoCambio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="455" y="0" width="100" height="20" uuid="c7608861-8b3d-4e65-a5c7-5eb5b817f8d7"/>
+				<textFieldExpression><![CDATA[$F{montoDLS}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch">
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="285bc5e5-5c5a-4767-a5d2-90a9c8d3e8ff"/>
+				<textFieldExpression><![CDATA[$V{montoDLS_1}]]></textFieldExpression>
+			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="0" y="22" width="100" height="20" uuid="544d69f0-9a9e-46d1-9fad-3a7abbeabbc7"/>
+				<reportElement x="22" y="0" width="100" height="20" uuid="544d69f0-9a9e-46d1-9fad-3a7abbeabbc7"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</columnFooter>
 </jasperReport>
